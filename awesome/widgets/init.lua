@@ -144,6 +144,7 @@ function _M.create_wibox(s)
    return awful.wibar {
       screen = s,
       position = 'top',
+      border_width = 5,
       widget = {
          layout = wibox.layout.align.horizontal,
          -- left widgets

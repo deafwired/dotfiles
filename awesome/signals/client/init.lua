@@ -36,6 +36,7 @@ client.connect_signal('request::titlebars', function(c)
       -- middle
       {
          -- title
+         -- awful.titlebar.widget.iconwidget(c),
          {
             align = 'center',
             widget = awful.titlebar.widget.titlewidget(c),
@@ -46,7 +47,6 @@ client.connect_signal('request::titlebars', function(c)
       },
       -- right
       {
-         -- awful.titlebar.widget.iconwidget(c),
          buttons = buttons,
          layout = wibox.layout.fixed.horizontal,
       },
