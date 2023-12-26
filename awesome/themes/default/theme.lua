@@ -12,11 +12,11 @@ local themes_path = gfs.get_themes_dir()
 
 local theme = {}
 
-theme.font          = "FiraCode Nerd Font 15"
+theme.font          = "FiraCode Nerd Font 14"
 
 theme.bg_normal     = "#000000"
-theme.bg_focus      = "#ffa500"
-theme.bg_urgent     = "#ff0000"
+theme.bg_focus      = "#ba071a"
+theme.bg_urgent     = "#EAC435"
 theme.bg_minimize   = "#444444"
 theme.bg_systray    = theme.bg_normal
 
@@ -28,7 +28,7 @@ theme.fg_minimize   = "#ffffff"
 theme.useless_gap         = dpi(5)
 theme.border_width        = dpi(5)
 theme.border_color_normal = "#000000"
-theme.border_color_active = "#ffa500"
+theme.border_color_active = "#ba071a"
 theme.border_color_marked = "#91231c"
 
 -- There are other variable sets

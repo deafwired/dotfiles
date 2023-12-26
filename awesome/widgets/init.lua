@@ -7,7 +7,7 @@ local wibox         = require 'wibox'
 
 local apps          = require 'config.apps'
 local mod           = require 'bindings.mod'
-
+local battery       = require 'widgets.battery-widget'
 _M.awesomemenu      = {
    { 'hotkeys',     function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
    { 'manual',      apps.manual_cmd },
@@ -29,7 +29,7 @@ _M.launcher         = awful.widget.launcher {
 }
 
 _M.keyboardlayout   = awful.widget.keyboardlayout()
-_M.textclock        = wibox.widget.textclock("%a %b %d, %I:%M ")
+_M.textclock        = wibox.widget.textclock("%a %b %d %I:%M ")
 
 
 function _M.create_promptbox() return awful.widget.prompt() end
@@ -144,13 +144,12 @@ function _M.create_wibox(s)
    return awful.wibar {
       screen = s,
       position = 'top',
-      border_width = 5,
+      -- border_width = 5,
       widget = {
          layout = wibox.layout.align.horizontal,
          -- left widgets
          {
             layout = wibox.layout.fixed.horizontal,
-            _M.launcher,
             s.taglist,
             s.promptbox,
          },
@@ -161,6 +160,15 @@ function _M.create_wibox(s)
             layout = wibox.layout.fixed.horizontal,
             -- _M.keyboardlayout,
             wibox.widget.systray(),
+            battery {
+               ac_prefix = "󱐋",
+               battery_prefix = "󰁹",
+               percent_colors = {
+                  { 25,  "red" },
+                  { 50,  "orange" },
+                  { 999, "green" },
+               },
+            },
             _M.textclock,
             s.layoutbox,
          }

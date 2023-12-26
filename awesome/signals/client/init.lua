@@ -31,25 +31,26 @@ client.connect_signal('request::titlebars', function(c)
          awful.titlebar.widget.closebutton(c),
          awful.titlebar.widget.maximizedbutton(c),
          awful.titlebar.widget.minimizebutton(c),
-         layout  = wibox.layout.fixed.horizontal(),
+         layout = wibox.layout.fixed.horizontal(),
       },
       -- middle
       {
          -- title
-         -- awful.titlebar.widget.iconwidget(c),
-         {
-            align = 'center',
-            widget = awful.titlebar.widget.titlewidget(c),
-            
-         },
+         awful.titlebar.widget.iconwidget(c),
+         awful.titlebar.widget.titlewidget(c),
+         -- {
+         --    align = 'center',
+         --    widget = awful.titlebar.widget.titlewidget(c),
+         -- },
          buttons = buttons,
-         layout  = wibox.layout.flex.horizontal,
+         layout  = wibox.layout.fixed.horizontal,
       },
       -- right
       {
          buttons = buttons,
          layout = wibox.layout.fixed.horizontal,
       },
+      expand="outside",
       layout = wibox.layout.align.horizontal,
    }
 end)

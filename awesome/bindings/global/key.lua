@@ -82,6 +82,22 @@ awful.keyboard.append_global_keybindings {
       on_press = function() awful.util.spawn('firefox') end,
    },
    awful.key {
+      modifiers = { mod.super, mod.shift },
+      key = 's',
+      description = 'take a screenshot',
+      group = 'launcher',
+      on_press = function() awful.util.spawn('flameshot gui') end,
+   },
+   awful.key {
+      modifiers   = { mod.super, mod.shift },
+      key         = 'c',
+      description = 'color piker',
+      group       = 'launcher',
+      on_press    = function()
+         awful.util.spawn('xcolor -s')
+      end,
+   },
+   awful.key {
       modifiers   = { mod.super },
       key         = 'p',
       description = 'show the menubar',
@@ -158,19 +174,19 @@ awful.keyboard.append_global_keybindings {
       on_press    = function() awful.spawn("playerctl next") end,
    },
    awful.key {
-      modifiers   = {  },
+      modifiers   = {},
       key         = '#232',
       description = 'decrease brightness',
       group       = 'brightness',
       on_press    = function() awful.spawn("brightnessctl set 5%-") end,
-    },
+   },
    awful.key {
-      modifiers   = {  },
+      modifiers   = {},
       key         = '#233',
       description = 'increase brightness',
       group       = 'brightness',
       on_press    = function() awful.spawn("brightnessctl set 5%+") end,
-    },
+   },
 }
 
 -- focus related keybindings
