@@ -86,7 +86,7 @@ awful.keyboard.append_global_keybindings {
       key = 's',
       description = 'take a screenshot',
       group = 'launcher',
-      on_press = function() awful.util.spawn('flameshot gui') end,
+      on_press = function() awful.util.spawn('flameshot gui -c') end,
    },
    awful.key {
       modifiers   = { mod.super, mod.shift },
@@ -104,9 +104,6 @@ awful.keyboard.append_global_keybindings {
       group       = 'launcher',
       on_press    = function() menubar.show() end,
    },
-}
--- fn key related keybindings
-awful.keyboard.append_global_keybindings {
 }
 -- tags related keybindings
 awful.keyboard.append_global_keybindings {
@@ -131,6 +128,44 @@ awful.keyboard.append_global_keybindings {
       group       = 'tag',
       on_press    = awful.tag.history.restore,
    },
+   awful.key {
+      modifiers   = { mod.super, mod.shift },
+      key         = 'Left',
+      description = 'view previous and move focused',
+      group       = 'tag',
+      on_press    = function()
+         if client.focus then
+            local index = awful.screen.focused().selected_tag.index - 1
+            index = (index < 1 and #awful.screen.focused().tags or index)
+            local tag = client.focus.screen.tags[index]
+            if tag then
+               client.focus:move_to_tag(tag)
+            end
+         end
+         awful.tag.viewprev()
+      end,
+   },
+   awful.key {
+      modifiers   = { mod.super, mod.shift },
+      key         = 'Right',
+      description = 'view next and move focused',
+      group       = 'tag',
+      on_press    = function()
+         if client.focus then
+            local index = awful.screen.focused().selected_tag.index + 1
+            index = (index > #awful.screen.focused().tags and 1 or index)
+            local tag = client.focus.screen.tags[index]
+            if tag then
+               client.focus:move_to_tag(tag)
+            end
+         end
+         awful.tag.viewnext()
+      end,
+   },
+}
+
+-- fn related keybindings
+awful.keyboard.append_global_keybindings {
    awful.key {
       modifiers   = {},
       key         = '#121',
@@ -187,8 +222,14 @@ awful.keyboard.append_global_keybindings {
       group       = 'brightness',
       on_press    = function() awful.spawn("brightnessctl set 5%+") end,
    },
+   awful.key {
+      modifiers   = {},
+      key         = '#107',
+      description = 'screenshot fullscreen',
+      group       = 'launcher',
+      on_press    = function() awful.util.spawn("flameshot full -c") end,
+   },
 }
-
 -- focus related keybindings
 awful.keyboard.append_global_keybindings {
    awful.key {
