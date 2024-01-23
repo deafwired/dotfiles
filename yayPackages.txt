@@ -1,0 +1,3 @@
+awesome-git
+pfetch
+picom-ftlabs-git

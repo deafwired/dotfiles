@@ -10,3 +10,5 @@
 !rofi/
 !rofi/*
 !picom.conf
+!pacmanPackages.txt
+!yayPackages.txt
