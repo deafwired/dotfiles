@@ -9,3 +9,4 @@
 !starship.toml
 !rofi/
 !rofi/*
+!picom.conf
