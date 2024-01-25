@@ -5,7 +5,7 @@
 !kitty/
 !kitty/**
 !fish/
-!fish/config.fish
+!fish/*
 !starship.toml
 !rofi/
 !rofi/*
