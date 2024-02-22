@@ -11,3 +11,6 @@ alias dim "brightnessctl set 1"
 starship init fish | source
 zoxide init fish | source
 pfetch
+
+# Created by `pipx` on 2024-02-15 20:35:29
+set PATH $PATH /home/matt/.local/bin

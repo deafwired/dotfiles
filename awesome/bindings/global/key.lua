@@ -9,6 +9,16 @@ local widgets = require 'widgets'
 
 menubar.utils.terminal = apps.terminal
 
+-- function to change volume
+local function change_volume(delta)
+   local index = 0
+   local output = io.popen("pactl info | grep 'Defualt Sink'"):read("*a")
+   if output then
+      index = output:match("(%d+)$")
+   end
+   awful.util.spawn('pactl set-sink-volume ' .. index .. delta .. "%")
+end
+
 -- general awesome keys
 awful.keyboard.append_global_keybindings {
    awful.key {
@@ -178,7 +188,8 @@ awful.keyboard.append_global_keybindings {
       key         = '#122',
       description = 'decrease volume',
       group       = 'audio',
-      on_press    = function() awful.spawn("pactl set-sink-volume 0 -6.25%") end,
+      on_press    = function() awful.spawn("pactl set-sink-volume 0 -6.25%") end
+      -- on_press    = change_volume(-6.25),
    },
    awful.key {
       modifiers   = {},
@@ -186,6 +197,7 @@ awful.keyboard.append_global_keybindings {
       description = 'increase volume',
       group       = 'audio',
       on_press    = function() awful.spawn("pactl set-sink-volume 0 +6.25%") end,
+      -- on_press    = change_volume(6.25),
    },
    awful.key {
       modifiers   = {},
@@ -234,14 +246,14 @@ awful.keyboard.append_global_keybindings {
 awful.keyboard.append_global_keybindings {
    awful.key {
       modifiers   = { mod.super },
-      key         = 'k',
+      key         = 'j',
       description = 'focus next by index',
       group       = 'client',
       on_press    = function() awful.client.focus.byidx(1) end,
    },
    awful.key {
       modifiers   = { mod.super },
-      key         = 'j',
+      key         = 'k',
       description = 'focus previous by index',
       group       = 'client',
       on_press    = function() awful.client.focus.byidx(-1) end,
@@ -260,14 +272,14 @@ awful.keyboard.append_global_keybindings {
    },
    awful.key {
       modifiers   = { mod.super, mod.ctrl },
-      key         = 'k',
+      key         = 'j',
       description = 'focus the next screen',
       group       = 'screen',
       on_press    = function() awful.screen.focus_relative(1) end,
    },
    awful.key {
       modifiers   = { mod.super, mod.ctrl },
-      key         = 'j',
+      key         = 'k',
       description = 'focus the previous screen',
       group       = 'screen',
       on_press    = function() awful.screen.focus_relative(-1) end,
@@ -290,14 +302,14 @@ awful.keyboard.append_global_keybindings {
 awful.keyboard.append_global_keybindings {
    awful.key {
       modifiers   = { mod.super, mod.shift },
-      key         = 'k',
+      key         = 'j',
       description = 'swap with next client by index',
       group       = 'client',
       on_press    = function() awful.client.swap.byidx(1) end,
    },
    awful.key {
       modifiers   = { mod.super, mod.shift },
-      key         = 'j',
+      key         = 'k',
       description = 'swap with previous client by index',
       group       = 'client',
       on_press    = function() awful.client.swap.byidx(-1) end,
