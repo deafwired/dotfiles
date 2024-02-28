@@ -2,7 +2,7 @@ configuration {
   display-drun: ">_:";
   display-window: "Windows: ";
   drun-display-format: "{icon} {name}";
-  modi: "window,run,drun";
+  modi: "window,run,drun,calc";
   font: "FiraCode Nerd Font 15";
   show-icons: true;
   icon-theme: "Papirus";
@@ -19,7 +19,7 @@ configuration {
   disabled : #8c8775;
 
   background-color: transparent;
-
+  text-color: @fg;
   margin: 0;
   padding: 0;
   spacing: 0;
@@ -44,7 +44,6 @@ element selected {
 }
 
 element-text {
-  background-color: #00000000;
   text-color: inherit;
   vertical-align: 0.5;
 }
