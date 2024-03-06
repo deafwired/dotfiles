@@ -9,6 +9,8 @@
 !starship.toml
 !rofi/
 !rofi/*
+!nvim/
+!nvim/**
 !picom.conf
 !pacmanPackages.txt
 !yayPackages.txt
