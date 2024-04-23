@@ -29,3 +29,9 @@ vim.opt.clipboard = "unnamedplus"
 
 -- no wrap
 vim.opt.wrap = false
+
+-- conceal level
+vim.o.concealevel = 2
+
+-- auto-session said i should do this
+vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"

@@ -8,6 +8,8 @@ alias explorer ranger
 alias ls exa
 alias cat bat
 alias dim "brightnessctl set 1"
+set PRINTER "Brother_HL-3070CW_series"
+export PRINTER
 starship init fish | source
 zoxide init fish | source
 pfetch
