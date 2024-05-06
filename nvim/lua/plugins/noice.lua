@@ -33,9 +33,9 @@ return {
 			routes = {
 				{
 					filter = {
-						event = "msg_show",
-						kind = "",
-						find = "written",
+						event = "lsp",
+						kind = "progress",
+						find = "jdtls",
 					},
 					opts = { skip = true },
 				},
