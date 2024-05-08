@@ -70,3 +70,7 @@ python_binary = "python3"
 [nodejs]
 format = "via [󰎙 $version](bold green) "
 disabled = true
+
+# disable docker in wsl
+[container]
+disabled = true
