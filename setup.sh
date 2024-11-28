@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/sh
 # sudo pacman -Syu --needed - <pacmanPackages.txt
 # yay -Syu --needed - <yayPackages.txt
 # chsh -s $(which fish)
