@@ -15,3 +15,5 @@
 !pacmanPackages.txt
 !yayPackages.txt
 !setup.sh
+!nixos/
+!nixos/*
