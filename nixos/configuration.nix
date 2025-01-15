@@ -8,7 +8,8 @@
     imports =
         [ # Include the results of the hardware scan.
             ./hardware-configuration.nix
-            ./hyprland.nix
+            ./packages.nix
+            ./modules/bundle.nix
         ];
 
     # Bootloader.
@@ -118,56 +119,6 @@
     programs.nix-ld.enable = true;
     # Allow unfree packages
     nixpkgs.config.allowUnfree = true;
-
-    # List packages installed in system profile. To search, run:
-    # $ nix search wget
-        environment.systemPackages = with pkgs; [
-            neovim
-            git
-            awesome
-            fish
-            wget
-            unzip
-            gcc
-            swaybg
-            rustup
-            lua
-            temurin-jre-bin-23
-            pulseaudio
-            hyprpicker
-            grimblast
-            fastfetch
-            vlc
-            obsidian
-            vscode
-            vim
-            wireshark
-            nmap
-            usbimager
-            processing
-            home-manager
-            steam-run
-            nss
-            zed-editor
-            lftp
-            libreoffice-qt6
-            texliveBasic
-            filezilla
-            zoxide
-            kmonad
-            home-manager
-            # thonny # WHY DEAR GOD WHY DO I HAVE TO INSTALL THIS TERRIBLE IDE
-        ];
-
-    #fonts
-    fonts = {
-        enableDefaultFonts = true;
-        fonts = with pkgs; [
-            (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
-            fira-code
-            fira-code-symbols
-        ];
-    };
 
     # trying to get drexel wifi to work
     nixpkgs.config.packageOverrides = pkgs: rec {

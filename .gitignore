@@ -11,9 +11,14 @@
 !rofi/*
 !nvim/
 !nvim/**
-!picom.conf
 !pacmanPackages.txt
 !yayPackages.txt
 !setup.sh
 !nixos/
 !nixos/*
+!nixos/modules/
+!nixos/modules/*
+!home-manager/
+!home-manager/*
+!flake.nix
+!flake.lock

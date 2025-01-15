@@ -6,6 +6,11 @@
         brightnessctl
         playerctl
         dunst
+        waybar
+        wofi
+        hyprpicker
+        grimblast
+        swaybg
     ];
 
 }
