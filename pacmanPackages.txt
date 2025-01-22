@@ -1,6 +1,0 @@
-pulseaudio
-playerctl
-brightnessctl
-flameshot
-fish
-kitty

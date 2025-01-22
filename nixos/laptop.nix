@@ -59,9 +59,9 @@
         };
     };
     # Configure keymap in X11
-    services.xserver = {
+    services.xserver.xkb = {
         layout = "us";
-        xkbVariant = "";
+        variant = "";
     };
 
     # programs.hyprland.enable = true;
@@ -70,6 +70,7 @@
 
     # Enable sound with pipewire.
     hardware.pulseaudio.enable = false;
+    hardware.graphics.enable32Bit = true;
     security.rtkit.enable = true;
     services.pipewire = {
         enable = true;
@@ -88,7 +89,7 @@
     hardware.bluetooth.enable = true;
 
     # Enable touchpad support (enabled default in most desktopManager).
-    services.xserver.libinput.enable = true;
+    services.libinput.enable = true;
 
     # Define a user account. Don't forget to set a password with ‘passwd’.
     users.users.matt = {

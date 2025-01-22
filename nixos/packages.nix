@@ -17,10 +17,11 @@
         zoxide
         kmonad
         home-manager
+        qbittorrent
     ];
 
     fonts = {
-        enableDefaultFonts = true;
+        enableDefaultPackages = true;
         packages = with pkgs; [
             fira-code
             fira-code-symbols

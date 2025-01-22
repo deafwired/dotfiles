@@ -3,7 +3,7 @@
         gcc
         rustup
         lua
-        tmurin-jre-bin-23
+        temurin-jre-bin-23
         processing
         texliveBasic
     ];

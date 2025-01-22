@@ -1,6 +1,7 @@
 { pkgs, ...}: {
     environment.systemPackages = with pkgs; [
-        neovim
+        # neovim
+        ripgrep
         git
         fish
         unzip
@@ -9,5 +10,6 @@
         home-manager
         lftp
         libreoffice-qt6
+        grc
     ];
 }

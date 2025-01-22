@@ -1,15 +1,15 @@
 { config, pkgs, ...}: {
+
+    imports = [
+        ./modules/bundle.nix
+    ];
+
     home = {
         username = "matt";
         homeDirectory = "/home/matt";
         stateVersion = "24.11";
     };
-    programs.fish = {
-        enable = true;
-        shellAliases = {
-            rebuild = "sudo nixos-rebuild switch";
-        };
-    };
+    
     programs.neovim = {
         enable = true;
         defaultEditor = true;
@@ -19,4 +19,6 @@
             nvim-treesitter
         ];
     };
+    
+    programs.home-manager.enable = true;
 }
