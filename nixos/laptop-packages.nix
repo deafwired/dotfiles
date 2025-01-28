@@ -14,10 +14,10 @@
         nss
         zed-editor
         filezilla
-        zoxide
         kmonad
         home-manager
         qbittorrent
+        libreoffice-qt6
     ];
 
     fonts = {

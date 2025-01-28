@@ -9,7 +9,8 @@
         nmap
         home-manager
         lftp
-        libreoffice-qt6
+        zoxide
         grc
+        zoxide
     ];
 }

@@ -38,6 +38,19 @@
                 ];
             };
 
+            nixosConfigurations.server = nixpkgs.lib.nixosSystem {
+                specialArgs = {
+                    pkgs-stable = import nixpkgs {
+                        inherit system;
+                        config.allowUnfree = true;
+                    };
+                    inherit inputs system;
+                };
+                modules = [
+                    ./nixos/server.nix
+                ];
+            };
+
             homeConfigurations.matt = home-manager.lib.homeManagerConfiguration {
                 pkgs = nixpkgs.legacyPackages.${system};
                 modules = [ 

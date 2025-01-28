@@ -7,9 +7,9 @@
 {
     imports =
         [ # Include the results of the hardware scan.
-            ./hardware-configuration.nix
-            ./packages.nix
-            ./modules/bundle.nix
+            ./laptop-hardware.nix
+            ./laptop-packages.nix
+            ./modules/laptop-bundle.nix
         ];
 
     # Bootloader.
