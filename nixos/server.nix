@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ lib, config, pkgs, ... }:
 
 {
 	imports =
@@ -124,6 +124,7 @@
         environmentFile = "/home/matt/.config/slskd";
     };
     users.groups.media = {};
+    systemd.services.slskd.serviceConfig.ProtectHome = lib.mkForce "read-only";
 
 # Immich
     services.immich = {
@@ -137,6 +138,7 @@
 # configuring open ssh to a different port  
 	services.openssh = {
 		enable = true;
+        settings.PasswordAuthentication = false;
 		ports = [ 8787 ];
 	};
 
@@ -145,6 +147,11 @@
 		enable = true;
 	};
 
+
+# cron
+    services.cron = {
+        enable = true;
+    };
 # Enable CUPS to print documents.
 	services.printing.enable = true;
 
@@ -185,7 +192,6 @@
 		vim
 		git
         neovim
-        cron
 	];
 
 # This value determines the NixOS release from which the default
