@@ -160,7 +160,7 @@
 
                 # Screenshots
                 "$mainMod SHIFT, S, exec, grimblast copy area"
-                ", PRTSCR, exec, grimblasg copy"
+                ", PRTSCR, exec, grimblast copy"
 
                 # Scroll through existing workspaces with mainMod + scroll
                 "$mainMod, mouse_down, workspace, e+1"

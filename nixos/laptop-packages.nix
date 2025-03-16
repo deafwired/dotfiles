@@ -18,6 +18,7 @@
         home-manager
         qbittorrent
         libreoffice-qt6
+        obs-studio
     ];
 
     fonts = {
@@ -25,6 +26,7 @@
         packages = with pkgs; [
             fira-code
             fira-code-symbols
+            pixel-code
             (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
         ];
     };

@@ -2,7 +2,7 @@
   programs.kitty = {
     enable = true;
     font = {
-      name = "FiraCode";
+      name = "PixelCode";
       size = 20;
     };
     settings = {
