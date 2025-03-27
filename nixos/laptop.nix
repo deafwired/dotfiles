@@ -108,7 +108,6 @@
             steam
             keepassxc
             tealdeer
-            lazygit
             gh
             pkgs-unstable.itch
         ];

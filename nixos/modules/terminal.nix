@@ -12,5 +12,6 @@
         zoxide
         grc
         zoxide
+        lazygit
     ];
 }
