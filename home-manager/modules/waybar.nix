@@ -52,8 +52,8 @@
                     on-click = "pavucontrol";
                 };
                 "clock" = {
-                    format = "  {:%I:%M %p}";
-                    format-alt = "  {:%m/%d/%y}";
+                    format = " {:%I:%M %p}";
+                    format-alt = " {:%m/%d/%y}";
                     tooltip = false;
                 };
 
