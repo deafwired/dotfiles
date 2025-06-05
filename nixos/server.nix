@@ -15,13 +15,19 @@
 	boot.loader.grub.enable = true;
 	boot.loader.grub.device = "/dev/nvme0n1";
 	boot.loader.grub.useOSProber = true;
+    boot.initrd.services.swraid.enable = true;
+    boot.initrd.services.swraid.mdadmConf = ''
+         ARRAY /dev/md0 metadata=1.2 UUID=a9c3123f:32a36065:887fb86f:b1d74c50   
+    '';
+
+
 
 	nix.settings.experimental-features = ["nix-command" "flakes"];
 
 	networking.hostName = "server"; # Define your hostname.
     networking.firewall = {
         enable = true;
-        allowedTCPPorts = [ 8787 5030 50300 2283 ];
+        allowedTCPPorts = [ 8787 5030 50300 2283 25565];
     };
 # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -71,23 +77,12 @@
     };
 
     # Mounting drives
-    fileSystems."/mnt/hdd1" = {
-        device = "/dev/disk/by-uuid/1ec7ecaf-6294-48c7-815b-571d9dd7adcb";
-        fsType="ext4";
-        options = [
-            "users"
-            "nofail"
-        ];
+    fileSystems."/data" = {
+        device = "/dev/disk/by-uuid/572ad98a-3476-45ad-9054-d3b698d88582";
+        fsType = "ext4";
+        options = [ "nofail" ];
     };
 
-    fileSystems."/mnt/hdd2" = {
-        device = "/dev/disk/by-uuid/3eca4bfc-cf25-459c-89af-c507fbea124e";
-        fsType="ext4";
-        options = [
-            "users"
-            "nofail"
-        ];
-    };
     # Syncthing
     services.syncthing = {
         enable = true;
@@ -133,7 +128,7 @@
         enable = true;
         host = "0.0.0.0";
         openFirewall = true;
-        # mediaLocation = "/mnt/hdd1/immich";
+        mediaLocation = "/data/immich";
     };
     users.users.immich.extraGroups = [ "video" "render" ];
 
@@ -159,16 +154,19 @@
         enable = true;
         tunnels = {
             "fb3f22e6-b732-4d36-bbc6-a4de3740a58c" = {
-                credentialsFile = "/home/matt/.cloudflared/fb3f22e6-b732-4d36-bbc6-a4de3740a58c.json";
+                credentialsFile = "/var/lib/home.json";
                 ingress = {
                     "ssh.deafwired.dev" = {
-                        service = "http://localhost:8787";
+                        service = "ssh://localhost:8787";
                     };
                     "slskd.deafwired.dev" = {
                         service = "http://localhost:5030";
                     };
                     "immich.deafwired.dev" = {
                         service = "http://localhost:2283";
+                    };
+                    "mc.deafwired.dev" = {
+                        service = "tcp://localhost:25565";
                     };
                 };
                 default = "http_status:404";
@@ -199,6 +197,7 @@
             gcc
             starship
             home-manager
+            screen
         ];
     };
 
@@ -217,6 +216,7 @@
         vim
         git
         neovim
+        mdadm
         # cloudflared
     ];
 
