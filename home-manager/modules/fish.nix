@@ -18,6 +18,7 @@
             dim = "brightnessctl set 1";
             nf = "fastfetch";
             nix-shell = "nix-shell --run fish";
+            lg = "lazygit";
         };
 
         plugins = [

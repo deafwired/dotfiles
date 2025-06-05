@@ -7,5 +7,6 @@
             ./nixvim.nix
             ./mysql.nix
             ./ai.nix
+            ./cyber.nix
         ];
 }

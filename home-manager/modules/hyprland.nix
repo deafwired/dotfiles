@@ -36,6 +36,7 @@
                 "swaybg -i ~/Desktop/background.png"
                 "waybar"
                 "dunst"
+                "obsidian"
             ];
     
             decoration = {
@@ -86,6 +87,7 @@
 
             input = {
                 kb_layout = "us";
+                kb_options = "caps:escape";
                 follow_mouse = 1;
                 touchpad = {
                     natural_scroll = true;
@@ -185,7 +187,10 @@
                 ", XF86AudioNext, exec, playerctl next"
                 ", XF86AudioPrev, exec, playerctl previous"
             ];
-            windowrulev2 = "suppressevent maximize, class:.*";
+            windowrulev2 = [
+                "suppressevent maximize, class:.*"
+                "workspace special:magic, class:^(obsidian)$"
+            ];
         };
     };
 }
