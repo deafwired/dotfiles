@@ -108,6 +108,10 @@
             tealdeer
             gh
             pkgs-unstable.itch
+            unityhub
+            neovim-remote
+            android-studio
+            android-tools
         ];
     };
 
