@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ lib, config, pkgs, ... }:
+{ lib, config, pkgs, pkgs-unstable, ... }:
 
 {
 	imports =
@@ -63,6 +63,10 @@
     # Enable the X11 windowing system.
     services.xserver.enable = true;
 
+    hardware.nvidia.open = true;
+    services.xserver.videoDrivers = [ "nvidia" ];
+    hardware.opengl.enable = true;
+
     # Enable the GNOME Desktop Environment.
     services.xserver.displayManager.gdm = {
         enable = true;
@@ -98,12 +102,18 @@
             };
             folders = {
                 "Music" = {
-                    path = "/home/matt/Music";
+                    path = "/data/Music";
                     devices = ["coolpc" "MattsPhone"];
                     id = "musicROCKS";
                 };
             };
         };
+    };
+
+    services.jellyfin = {
+        enable = true;
+        dataDir = "/data/jellyfin";
+        user = "matt";
     };
 
     # Slskd
@@ -123,6 +133,15 @@
     users.groups.media = {};
     systemd.services.slskd.serviceConfig.ProtectHome = lib.mkForce "read-only";
 
+    # Factorio
+    services.factorio = {
+        enable = true;
+        openFirewall = true;
+        port = 25565;
+        saveName = "space";
+        package = pkgs-unstable.factorio-headless;
+    };
+
     # Immich
     services.immich = {
         enable = true;
@@ -137,11 +156,6 @@
         enable = true;
         settings.PasswordAuthentication = false;
         ports = [ 8787 ];
-    };
-
-    # fail2ban
-    services.fail2ban = {
-        enable = true;
     };
 
     # cron
@@ -164,6 +178,9 @@
                     };
                     "immich.deafwired.dev" = {
                         service = "http://localhost:2283";
+                    };
+                    "jellyfin.deafwired.dev" = {
+                        service = "http://localhost:8096";
                     };
                     "mc.deafwired.dev" = {
                         service = "tcp://localhost:25565";
@@ -192,12 +209,11 @@
         description = "matt";
         extraGroups = [ "networkmanager" "wheel" ];
         packages = with pkgs; [
-            kitty
             rustup
             gcc
-            starship
             home-manager
             screen
+            beets
         ];
     };
 

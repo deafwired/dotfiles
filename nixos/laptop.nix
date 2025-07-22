@@ -98,9 +98,7 @@
         description = "matt";
         extraGroups = [ "networkmanager" "wheel" ];
         packages = with pkgs; [
-            starship
             discord
-            kitty
             wofi
             waybar
             wttrbar

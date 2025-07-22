@@ -13,5 +13,8 @@
         grc
         zoxide
         lazygit
+        htop
+        kitty
+        starship
     ];
 }
