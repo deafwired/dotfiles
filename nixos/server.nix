@@ -15,8 +15,8 @@
 	boot.loader.grub.enable = true;
 	boot.loader.grub.device = "/dev/nvme0n1";
 	boot.loader.grub.useOSProber = true;
-    boot.initrd.services.swraid.enable = true;
-    boot.initrd.services.swraid.mdadmConf = ''
+    boot.swraid.enable = true;
+    boot.swraid.mdadmConf = ''
          ARRAY /dev/md0 metadata=1.2 UUID=a9c3123f:32a36065:887fb86f:b1d74c50   
     '';
 
@@ -27,7 +27,7 @@
 	networking.hostName = "server"; # Define your hostname.
     networking.firewall = {
         enable = true;
-        allowedTCPPorts = [ 8787 5030 50300 2283 25565];
+        allowedTCPPorts = [ 8787 5030 50300 2283 25565 3000 ];
     };
 # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -65,7 +65,7 @@
 
     hardware.nvidia.open = true;
     services.xserver.videoDrivers = [ "nvidia" ];
-    hardware.opengl.enable = true;
+    hardware.graphics.enable = true;
 
     # Enable the GNOME Desktop Environment.
     services.xserver.displayManager.gdm = {
@@ -124,7 +124,7 @@
         openFirewall = true;
         settings = {
             shares = {
-                directories = ["/home/matt/Music/"];
+                directories = ["/data/Music"];
             };
         };
         domain = "127.0.0.1";
@@ -145,6 +145,7 @@
     # Immich
     services.immich = {
         enable = true;
+        package = pkgs.immich;
         host = "0.0.0.0";
         openFirewall = true;
         mediaLocation = "/data/immich";
@@ -161,6 +162,18 @@
     # cron
     services.cron = {
         enable = true;
+    };
+
+    # grafana
+    services.grafana = {
+        enable = true;
+        settings = {
+            server = {
+                http_addr = "0.0.0.0";
+                http_port = 3000;
+                domain = "deafwired.dev";
+            };
+        };
     };
 
     # cloudflared
