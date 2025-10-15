@@ -1,9 +1,8 @@
 return {
     "alexanderbluhm/black.nvim",
-    name = "black",
+    opts = {},
     lazy = false,
-    priority = 1000,
     config = function()
-        vim.cmd.colorscheme"black"
-    end
+        vim.cmd("colorscheme black")
+    end,
 }

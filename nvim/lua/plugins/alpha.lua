@@ -1,24 +1,22 @@
 return {
-	"goolord/alpha-nvim",
-	dependencies = {
-		"nvim-tree/nvim-web-devicons",
-	},
+  "goolord/alpha-nvim",
+  dependencies = {
+    "nvim-tree/nvim-web-devicons",
+  },
+  opts = function()
+    local dashboard = require("alpha.themes.startify")
 
-	config = function()
-		local alpha = require("alpha")
-		local dashboard = require("alpha.themes.startify")
+    dashboard.section.header.val = {
+      [[                      /$$              ]],
+      [[                     |__/              ]],
+      [[ /$$$$$$$  /$$    /$$ /$$ /$$$$$$/$$$$ ]],
+      [[| $$__  $$|  $$  /$$/| $$| $$_  $$_  $$]],
+      [[| $$  \ $$ \  $$/$$/ | $$| $$ \ $$ \ $$]],
+      [[| $$  | $$  \  $$$/  | $$| $$ | $$ | $$]],
+      [[| $$  | $$   \  $/   | $$| $$ | $$ | $$]],
+      [[|__/  |__/    \_/    |__/|__/ |__/ |__/]],
+    }
 
-		dashboard.section.header.val = {
-			[[                      /$$              ]],
-			[[                     |__/              ]],
-			[[ /$$$$$$$  /$$    /$$ /$$ /$$$$$$/$$$$ ]],
-			[[| $$__  $$|  $$  /$$/| $$| $$_  $$_  $$]],
-			[[| $$  \ $$ \  $$/$$/ | $$| $$ \ $$ \ $$]],
-			[[| $$  | $$  \  $$$/  | $$| $$ | $$ | $$]],
-			[[| $$  | $$   \  $/   | $$| $$ | $$ | $$]],
-			[[|__/  |__/    \_/    |__/|__/ |__/ |__/]],
-		}
-
-		alpha.setup(dashboard.opts)
-	end,
+    return dashboard.opts
+  end,
 }

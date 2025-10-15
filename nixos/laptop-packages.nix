@@ -19,6 +19,7 @@
         qbittorrent
         libreoffice-qt6
         obs-studio
+        calibre
     ];
 
     fonts = {
@@ -27,7 +28,7 @@
             fira-code
             fira-code-symbols
             pixel-code
-            (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
+            nerd-fonts.symbols-only
         ];
     };
 }

@@ -67,6 +67,9 @@
       container = {
         disabled = true;
       };
+      battery = {
+          disabled = true;
+      };
     };
   };
 }

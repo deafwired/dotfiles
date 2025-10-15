@@ -1,8 +1,9 @@
 return {
-    "stevearc/oil.nvim",
-    opts = {},
-    config = function()
-        require("oil").setup()
-        vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-    end,
+  'stevearc/oil.nvim',
+  ---@module 'oil'
+  ---@type oil.SetupOpts
+  opts = {},
+  dependencies = { { "echasnovski/mini.icons", opts = {} } },
+  -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+  lazy = false,
 }
