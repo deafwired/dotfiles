@@ -20,4 +20,5 @@
 !home-manager/**/
 !home-manager/**/*
 !flake.nix
-!flake.lock
+flake.lock
+lazy-lock.json
