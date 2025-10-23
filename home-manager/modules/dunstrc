@@ -1,0 +1,40 @@
+[global]
+    # Font and geometry
+    font = Pixel Code 16
+    geometry = ""  # let dunst choose a default location
+
+    # Transparency and frame
+    transparency = 0
+    frame_width = 5
+    frame_color = "#ba071a"
+    separator_height = 1
+
+    # Window behavior
+    origin = "top-right"
+    alignment = "right"
+    sort = "oldest"
+    follow = "mouse"
+    margin = 20
+    padding = 10
+    corner_radius = 10
+
+[urgency_low]
+    background = "#000000"
+    foreground = "#ffffff"
+    timeout = 5
+
+[urgency_normal]
+    background = "#000000"
+    foreground = "#ffffff"
+    timeout = 10
+
+[urgency_critical]
+    background = "#f38ba8"
+    foreground = "#000000"
+    timeout = 0
+
+[rules]
+# example rule: make notifications from NetworkManager show first
+; appname = "NetworkManager"
+; urgency = "low"
+; summary = "Network"

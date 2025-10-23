@@ -9,6 +9,7 @@
             starship init fish | source
             zoxide init fish | source
             enable_transience
+            set fish_user_paths $HOME/.local/bin $fish_user_paths
         '';
 
         shellAliases = {
