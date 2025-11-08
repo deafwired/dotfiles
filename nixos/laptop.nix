@@ -98,7 +98,7 @@
         description = "matt";
         extraGroups = [ "networkmanager" "wheel" ];
         packages = with pkgs; [
-            discord
+            vesktop
             wofi
             waybar
             wttrbar

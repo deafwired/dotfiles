@@ -21,4 +21,4 @@
 !home-manager/**/*
 !flake.nix
 flake.lock
-lazy-lock.json
+/nvim/lazy-lock.json
