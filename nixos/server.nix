@@ -27,7 +27,7 @@
 	networking.hostName = "server"; # Define your hostname.
     networking.firewall = {
         enable = true;
-        allowedTCPPorts = [ 8787 5030 50300 2283 25565 3000 ];
+        allowedTCPPorts = [ 8787 5030 50300 2283 25565 3000 8080 ];
     };
 # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -183,9 +183,6 @@
             "fb3f22e6-b732-4d36-bbc6-a4de3740a58c" = {
                 credentialsFile = "/var/lib/home.json";
                 ingress = {
-                    "ssh.deafwired.dev" = {
-                        service = "ssh://localhost:8787";
-                    };
                     "slskd.deafwired.dev" = {
                         service = "http://localhost:5030";
                     };
@@ -198,6 +195,15 @@
                     "mc.deafwired.dev" = {
                         service = "tcp://localhost:25565";
                     };
+                    "share.deafwired.dev" = {
+                        service = "http://localhost:3923";
+                    };
+                    "torrent.deafwired.dev" = {
+                        service = "http://localhost:8080";
+                    };
+                    "wishlist.deafwired.dev" = {
+                            service = "http://localhost:3456";
+                        }
                 };
                 default = "http_status:404";
             };

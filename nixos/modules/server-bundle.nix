@@ -7,5 +7,6 @@
             # ./nixvim.nix
             # ./ai.nix
             ./mysql.nix
+            ./torrent.nix
         ];
 }
