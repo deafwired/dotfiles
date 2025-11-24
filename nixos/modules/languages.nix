@@ -8,5 +8,6 @@
         temurin-jre-bin-23
         processing
         texliveBasic
+        racket
     ];
 }

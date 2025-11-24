@@ -69,7 +69,6 @@
     services.printing.enable = true;
 
     # Enable sound with pipewire.
-    hardware.pulseaudio.enable = false;
     hardware.graphics.enable32Bit = true;
     security.rtkit.enable = true;
     services.pipewire = {
@@ -112,6 +111,7 @@
             neovim-remote
             android-studio
             android-tools
+            pavucontrol
         ];
     };
 
