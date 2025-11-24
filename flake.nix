@@ -20,9 +20,11 @@
             url = "github:nix-community/nixvim/nixos-25.05";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+
+        copyparty.url = "github:9001/copyparty";
     };
     
-    outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ...}@inputs:
+    outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, copyparty, ...}@inputs:
         let
             system = "x86_64-linux";
         in {
@@ -57,6 +59,39 @@
                     inherit inputs system;
                 };
                 modules = [
+                    copyparty.nixosModules.default
+                    ({ pkgs, ... }: {
+                        nixpkgs.overlays = [ copyparty.overlays.default ];
+                        services.copyparty = {
+                            enable = true;
+                            accounts = {
+                                matt.passwordFile = "/data/keys/matt_password"; 
+                            };
+
+                            volumes = {
+                                "/" = {
+                                    path = "/data/copyparty/misc";
+                                    access = {
+                                        r = "*";
+                                        rwda = [ "matt" ];
+                                    };
+                                };
+                                "/videos" = {
+                                    path = "/data/copyparty/videos";
+                                    access = {
+                                        r = "*";
+                                        rwda = [ "matt" ];
+                                    };
+                                };
+                                "/priv" = {
+                                    path = "/data/copyparty/private";
+                                    access = {
+                                        rwda = [ "matt" ];
+                                    };
+                                };
+                            };
+                        };
+                    })
                     ./nixos/server.nix
                 ];
             };
