@@ -8,5 +8,6 @@
         jre25_minimal
         processing
         texliveBasic
+        racket
     ];
 }
