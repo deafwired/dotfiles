@@ -5,7 +5,7 @@
         cargo
         lua
         dotnet-sdk_9
-        temurin-jre-bin-23
+        jre25_minimal
         processing
         texliveBasic
     ];
