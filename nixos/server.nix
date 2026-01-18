@@ -68,11 +68,11 @@
     hardware.graphics.enable = true;
 
     # Enable the GNOME Desktop Environment.
-    services.xserver.displayManager.gdm = {
+    services.displayManager.gdm = {
         enable = true;
         autoSuspend = false;
     };
-    services.xserver.desktopManager.gnome.enable = true;
+    services.desktopManager.gnome.enable = true;
 
     # Configure keymap in X11
     services.xserver.xkb = {
