@@ -112,6 +112,8 @@
             android-studio
             android-tools
             pavucontrol
+            forge-mtg
+            anki
         ];
     };
 

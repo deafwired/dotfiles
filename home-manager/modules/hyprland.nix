@@ -190,6 +190,8 @@
             windowrulev2 = [
                 "suppressevent maximize, class:.*"
                 "workspace special:magic, class:^(obsidian)$"
+                "float, class:^(org.keepassxc.KeePassXC)$"
+                "size 900 700, class:^(org.keepassxc.KeePassXC)$"
             ];
         };
     };

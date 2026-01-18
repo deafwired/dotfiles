@@ -1,3 +1,7 @@
 require("config.lazy")
 require("config.keymaps")
-require("oil").setup()
+require("oil").setup({
+    float = {
+        border = "rounded",
+    },
+})
