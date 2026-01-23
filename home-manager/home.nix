@@ -7,7 +7,7 @@
     home = {
         username = "matt";
         homeDirectory = "/home/matt";
-        stateVersion = "24.11";
+        stateVersion = "25.11";
     };
     
     programs.neovim = {

@@ -94,9 +94,7 @@
                 };
             };
 
-            gestures = {
-                workspace_swipe = true;
-            };
+            gesture = "3, horizontal, workspace";
 
             bindm = [
                 # Move/resize windows with mainMod + LMB/RMB and dragging

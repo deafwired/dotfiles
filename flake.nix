@@ -16,11 +16,6 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
-        nixvim = {
-            url = "github:nix-community/nixvim/nixos-25.11";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
-
         copyparty.url = "github:9001/copyparty";
     };
     
@@ -42,7 +37,6 @@
                 };
                 modules = [
                     ./nixos/laptop.nix
-                    inputs.nixvim.nixosModules.nixvim
                 ];
             };
 

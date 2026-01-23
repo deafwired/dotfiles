@@ -50,7 +50,6 @@
     # Enable the X11 windowing system.
 
     services = {
-        enable = true;
         desktopManager = {
             gnome.enable = true;
         };
