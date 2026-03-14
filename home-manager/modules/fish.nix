@@ -13,7 +13,7 @@
         '';
 
         shellAliases = {
-            rebuild = "sudo nixos-rebuild switch --flake ~/dotfiles";
+            rebuild = "sudo nix flake update --flake ~/dotfiles && sudo nixos-rebuild switch --flake ~/dotfiles";
             hrebuild = "home-manager switch --flake ~/dotfiles";
             cd = "z";
             dim = "brightnessctl set 1";
