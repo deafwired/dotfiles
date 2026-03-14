@@ -24,6 +24,16 @@
 
 	nix.settings.experimental-features = ["nix-command" "flakes"];
 
+    # Weekly automatic NixOS updates
+    system.autoUpgrade = {
+        enable = true;
+        flake = "github:deafwired/dotfiles#server";
+        dates = "weekly";
+        randomizedDelaySec = "45min";
+        persistent = true;
+        allowReboot = false;
+    };
+
 	networking.hostName = "server"; # Define your hostname.
     networking.firewall = {
         enable = true;
