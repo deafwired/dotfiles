@@ -89,6 +89,17 @@
     # Enable touchpad support (enabled default in most desktopManager).
     services.libinput.enable = true;
 
+    # Fingerprint shenanigans
+    services.fwupd.enable = true;
+    services.fwupd.package = (import (builtins.fetchTarball {
+                url = "https://github.com/NixOS/nixpkgs/archive/bb2009ca185d97813e75736c2b8d1d8bb81bde05.tar.gz";
+                sha256 = "sha256:003qcrsq5g5lggfrpq31gcvj82lb065xvr7bpfa8ddsw8x4dnysk";
+    }) { inherit (pkgs) system; }).fwupd;
+
+    security.pam.services.sudo.fprintAuth = true;
+    security.pam.services.hyprlock.fprintAuth = true;
+    security.pam.services.gdm-fingerprint.fprintAuth = true;
+
     # Define a user account. Don't forget to set a password with ‘passwd’.
     users.users.matt = {
         isNormalUser = true;
@@ -112,7 +123,8 @@
             android-tools
             pavucontrol
             forge-mtg
-            anki
+            arduino-ide
+            pandoc
         ];
     };
 
@@ -135,15 +147,6 @@
       dates = "weekly";
       options = "--delete-older-than 30d";
     };
-
-
-    # Some programs need SUID wrappers, can be configured further or are
-    # started in user sessions.
-    # programs.mtr.enable = true;
-    # programs.gnupg.agent = {
-    #   enable = true;
-    #   enableSSHSupport = true;
-    # };
 
     # List services that you want to enable:
     services.syncthing = {

@@ -38,6 +38,15 @@ window#waybar {
     border-style: solid;
 }
 
+#window.empty {
+    background-color: transparent;
+    border: none;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+    min-width: 0;
+}
+
 #workspaces button {
     background: #000000;
     color: #ffffff;
@@ -70,10 +79,10 @@ window#waybar {
 }
 
 @keyframes blink {
-to {
-    background-color: #ffffff;
-    color: black;
-}
+    to {
+        background-color: #ffffff;
+        color: black;
+    }
 }
 
 #battery.warning:not(.charging) {

@@ -28,7 +28,7 @@
     # Weekly automatic NixOS updates
     system.autoUpgrade = {
         enable = true;
-        flake = "github:deafwired/dotfiles#server";
+        flake = "/home/matt/dotfiles#server";
         dates = "weekly";
         randomizedDelaySec = "45min";
         persistent = true;
