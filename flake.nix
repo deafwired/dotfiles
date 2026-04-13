@@ -16,6 +16,8 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
+        nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
         copyparty.url = "github:9001/copyparty";
     };
     
@@ -36,6 +38,7 @@
                     inherit inputs system;
                 };
                 modules = [
+                    inputs.nixos-hardware.nixosModules.framework-13th-gen-intel
                     ./nixos/laptop.nix
                 ];
             };

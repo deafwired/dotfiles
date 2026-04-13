@@ -7,6 +7,7 @@
             "$mainMod" = "SUPER";
             "$terminal" = "kitty";
             "$browser" = "firefox";
+            "$fileManager" = "files";
             "$menu" = "~/.config/hypr/rofi.sh";
             
             monitor = ",preferred,auto,1";
@@ -34,9 +35,9 @@
             
             exec-once = [
                 "swaybg -i ~/Desktop/background.png"
-                "waybar"
+                "waybar -b mainBar"
                 "dunst"
-                "obsidian"
+                "[workspace special:magic silent] obsidian"
             ];
     
             decoration = {
@@ -106,7 +107,8 @@
                 "$mainMod, RETURN, exec, $terminal"
                 "$mainMod, BACKSLASH, exec, $browser"
                 "$mainMod SHIFT, C, exec, hyprpicker -a"
-                "$mainMod, O, exec, obsidian"
+                "$mainMod, O, exec, [workspace special:magic silent] obsidian"
+                "$mainMod, C, exec, hyprlock"
 
                 "$mainMod, Q, killactive,"
                 "$mainMod&Shift_L, Q, exit,"
@@ -187,7 +189,7 @@
             ];
             windowrulev2 = [
                 "suppressevent maximize, class:.*"
-                "workspace special:magic, class:^(obsidian)$"
+                "workspace special:magic silent, class:^(obsidian|Obsidian)$"
                 "float, class:^(org.keepassxc.KeePassXC)$"
                 "size 900 700, class:^(org.keepassxc.KeePassXC)$"
             ];
