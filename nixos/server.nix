@@ -7,6 +7,7 @@
 {
 	imports =
 		[ # Include the results of the hardware scan.
+        ./server-packages.nix
 		./server-hardware.nix
         ./modules/server-bundle.nix
 		];
@@ -38,6 +39,7 @@
     networking.firewall = {
         enable = true;
         allowedTCPPorts = [ 8787 5030 50300 2283 25565 3000 8080 ];
+        allowedUDPPorts = [ 26000 25565 ];
     };
 # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -243,6 +245,8 @@
             home-manager
             screen
             beets
+            python315
+            nodejs_24
         ];
     };
 
