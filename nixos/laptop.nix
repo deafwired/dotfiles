@@ -97,7 +97,7 @@
     }) { inherit (pkgs) system; }).fwupd;
 
     security.pam.services.sudo.fprintAuth = true;
-    security.pam.services.hyprlock.fprintAuth = true;
+    security.pam.services.hyprlock.fprintAuth = false;
     security.pam.services.gdm-fingerprint.fprintAuth = true;
 
     # Define a user account. Don't forget to set a password with ‘passwd’.
