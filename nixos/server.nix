@@ -7,8 +7,8 @@
 {
 	imports =
 		[ # Include the results of the hardware scan.
-        ./server-packages.nix
-		./server-hardware.nix
+        ./packages-server.nix
+		./hardware-server.nix
         ./modules/server-bundle.nix
 		];
 
@@ -109,13 +109,13 @@
         settings = {
             devices = {
                 "MattsPhone" = { id = "HJTHW5F-MXLEMOB-SBHOO2E-4PFDNU7-RM7DPXN-67MABS7-KB3CKWN-G25QEQI";};
-                "coolpc" = { id = "IZODFBD-RAJ34PP-IQQOROC-RN7POCA-ZZMNCE2-GBSTNSZ-3H6BBP4-QI5BHQZ";};
+                "artemis" = { id = "M574L33-U6QBYGE-7ZBJAEF-HEQKIVM-CFB5CU7-BZGBCZJ-3L2YYNG-NMR26AM";};
                 "laptop" = { id = "BKZMWUW-BUXL7Z5-MTJ4QDJ-DAZ43JX-QBKBJGQ-O6IQMR2-2TEDSW7-QTDZTA5";};
             };
             folders = {
                 "Music" = {
                     path = "/data/Music";
-                    devices = ["coolpc" "MattsPhone"];
+                    devices = ["artemis" "MattsPhone"];
                     id = "musicROCKS";
                 };
             };

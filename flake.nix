@@ -43,6 +43,24 @@
                 ];
             };
 
+            nixosConfigurations.artemis  = nixpkgs.lib.nixosSystem {
+                specialArgs = {
+                    pkgs-stable = import nixpkgs {
+                        inherit system;
+                        config.allowUnfree = true;
+                    };
+                    pkgs-unstable = import nixpkgs-unstable {
+                        inherit system;
+                        config.allowUnfree = true;
+                    };
+                    inherit inputs system;
+                };
+                modules = [
+                    ./nixos/artemis.nix
+                ];
+            };
+
+
             nixosConfigurations.server = nixpkgs.lib.nixosSystem {
                 specialArgs = {
                     pkgs-stable = import nixpkgs {

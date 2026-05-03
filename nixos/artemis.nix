@@ -1,3 +1,4 @@
+
 #68292E Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
@@ -7,9 +8,9 @@
 {
     imports =
         [ # Include the results of the hardware scan.
-            ./hardware-laptop.nix
-            ./packages-laptop.nix
-            ./modules/laptop-bundle.nix
+            ./hardware-artemis.nix
+            ./packages-artemis.nix
+            ./modules/artemis-bundle.nix
         ];
 
     # Bootloader.
@@ -19,7 +20,7 @@
     # experimental features
     nix.settings.experimental-features = ["nix-command" "flakes"];
 
-    networking.hostName = "laptop"; # Define your hostname.
+    networking.hostName = "artemis"; # Define your hostname.
     # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
     # Configure network proxy if necessary
@@ -119,12 +120,8 @@
             pkgs-unstable.itch
             unityhub
             neovim-remote
-            android-studio
             android-tools
             pavucontrol
-            forge-mtg
-            arduino-ide
-            pandoc
         ];
     };
 
@@ -157,19 +154,16 @@
         settings = {
             devices = {
                 "MattsPhone" = { id = "HJTHW5F-MXLEMOB-SBHOO2E-4PFDNU7-RM7DPXN-67MABS7-KB3CKWN-G25QEQI";};
-                "artemis" = { id = "M574L33-U6QBYGE-7ZBJAEF-HEQKIVM-CFB5CU7-BZGBCZJ-3L2YYNG-NMR26AM";};
+                "laptop" = { id = "BKZMWUW-BUXL7Z5-MTJ4QDJ-DAZ43JX-QBKBJGQ-O6IQMR2-2TEDSW7-QTDZTA5";};
             };
             folders = {
-                "Documents" = {
-                    path = "/home/matt/Documents";
-                };
                 "keepass" = {
                     path = "/home/matt/Documents/Passwords"; 
-                    devices = ["MattsPhone" "artemis"];
+                    devices = ["MattsPhone" "laptop"];
                 };
                 "Notes" = {
                     path = "/home/matt/Documents/Notes";
-                    devices = ["MattsPhone" "artemis"];
+                    devices = ["MattsPhone" "laptop"];
                 };
             };
             gui = {
