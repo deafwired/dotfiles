@@ -64,12 +64,35 @@
         variant = "";
     };
 
+    services.xserver.videoDrivers = [ "nvidia" ];
+
+    hardware.graphics.enable = true;
+    hardware.graphics.enable32Bit = true;
+    hardware.nvidia = {
+        modesetting.enable = true;
+        open = true;
+        nvidiaSettings = true;
+        powerManagement.enable = false;
+        powerManagement.finegrained = false;
+        package = config.boot.kernelPackages.nvidiaPackages.stable;
+    };
+
+    systemd.services.nvidia-persistence = {
+        description = "Enable NVIDIA GPU Persistence Mode";
+        after = [ "multi-user.target" ];
+        wantedBy = [ "multi-user.target" ];
+        serviceConfig = {
+            Type = "simple";
+            ExecStart = "${config.hardware.nvidia.package}/bin/nvidia-smi -pm 1";
+            RemainAfterExit = true;
+        };
+    };
+
     # programs.hyprland.enable = true;
     # Enable CUPS to print documents.
     services.printing.enable = true;
 
     # Enable sound with pipewire.
-    hardware.graphics.enable32Bit = true;
     security.rtkit.enable = true;
     services.pipewire = {
         enable = true;
@@ -144,6 +167,8 @@
       dates = "weekly";
       options = "--delete-older-than 30d";
     };
+
+    services.flatpak.enable = true;
 
     # List services that you want to enable:
     services.syncthing = {

@@ -6,6 +6,7 @@
         wget
         pulseaudio
         fastfetch
+        btop-cuda
         vlc
         obsidian
         vscode
