@@ -106,6 +106,7 @@
             bind = [
                 "$mainMod, RETURN, exec, $terminal"
                 "$mainMod, BACKSLASH, exec, $browser"
+                "$mainMod SHIFT, P, exec, $browser --private-window"
                 "$mainMod SHIFT, C, exec, hyprpicker -a"
                 "$mainMod, O, exec, [workspace special:magic silent] obsidian"
                 "$mainMod, C, exec, hyprlock"
@@ -157,8 +158,9 @@
                 "$mainMod SHIFT, 9, movetoworkspace, 9"
                 "$mainMod SHIFT, 0, movetoworkspace, 10"
 
-                # Example special workspace (scratchpad)
+                # special workspace
                 "$mainMod, S, togglespecialworkspace, magic"
+                "$mainMod ALT, S, movetoworkspace, special:magic"
 
                 # Screenshots
                 "$mainMod SHIFT, S, exec, grimblast copy area"
