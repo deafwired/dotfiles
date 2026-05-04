@@ -58,6 +58,26 @@
             gdm.enable = true;
         };
     };
+
+    programs.dconf = {
+        enable = true;
+        profiles.user.databases = [
+            {
+                settings = {
+                    "org/gnome/desktop/interface" = {
+                        color-scheme = "prefer-dark";
+                        gtk-theme = "Adwaita-dark";
+                    };
+                };
+            }
+        ];
+    };
+
+    # boot.kernelParams = [
+    #   "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+    #   "nvidia.NVreg_TemporaryFilePath=/var/tmp"
+    # ];
+
     # Configure keymap in X11
     services.xserver.xkb = {
         layout = "us";
@@ -72,21 +92,11 @@
         modesetting.enable = true;
         open = true;
         nvidiaSettings = true;
-        powerManagement.enable = false;
+        powerManagement.enable = true;
         powerManagement.finegrained = false;
         package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
 
-    systemd.services.nvidia-persistence = {
-        description = "Enable NVIDIA GPU Persistence Mode";
-        after = [ "multi-user.target" ];
-        wantedBy = [ "multi-user.target" ];
-        serviceConfig = {
-            Type = "simple";
-            ExecStart = "${config.hardware.nvidia.package}/bin/nvidia-smi -pm 1";
-            RemainAfterExit = true;
-        };
-    };
 
     # programs.hyprland.enable = true;
     # Enable CUPS to print documents.
