@@ -4,7 +4,6 @@
     };
     environment.systemPackages = with pkgs; [
         wget
-        pulseaudio
         fastfetch
         btop-cuda
         vlc

@@ -15,6 +15,7 @@
         lazygit
         htop
         kitty
+        zip
         starship
     ];
 }

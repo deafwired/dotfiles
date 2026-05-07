@@ -59,6 +59,7 @@
         };
     };
 
+    services.gnome.gnome-remote-desktop.enable = true;
     programs.dconf = {
         enable = true;
         profiles.user.databases = [
@@ -109,8 +110,7 @@
         alsa.enable = true;
         alsa.support32Bit = true;
         pulse.enable = true;
-        # If you want to use JACK applications, uncomment this
-        #jack.enable = true;
+        jack.enable = true;
 
         # use the example session manager (no others are packaged yet so this is enabled by default,
         # no need to redefine it in your config for now)
@@ -122,6 +122,19 @@
 
     # Enable touchpad support (enabled default in most desktopManager).
     services.libinput.enable = true;
+
+    # XDG Desktop Portal for screen sharing on Wayland
+    xdg.portal = {
+        enable = true;
+        extraPortals = with pkgs; [
+            xdg-desktop-portal-gtk
+            xdg-desktop-portal-gnome
+        ];
+        configPackages = with pkgs; [
+            xdg-desktop-portal-gnome
+        ];
+        config.common.default = [ "gnome" ];
+    };
 
     # Fingerprint shenanigans
     services.fwupd.enable = true;
@@ -155,6 +168,8 @@
             neovim-remote
             android-tools
             pavucontrol
+            spotify
+            onlyoffice-desktopeditors
         ];
     };
 

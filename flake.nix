@@ -56,6 +56,9 @@
                     inherit inputs system;
                 };
                 modules = [
+                    ({ ... }: {
+                        nixpkgs.overlays = [ (import ./nixos/overlays/spotx.nix) ];
+                    })
                     ./nixos/artemis.nix
                 ];
             };

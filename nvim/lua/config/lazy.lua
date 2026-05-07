@@ -27,6 +27,9 @@ vim.opt.shiftwidth = 4
 vim.opt.smartindent = true
 vim.opt.breakindent = true
 
+-- color column
+vim.opt.colorcolumn = "120"
+
 -- leader
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
