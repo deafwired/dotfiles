@@ -170,6 +170,7 @@
             pavucontrol
             spotify
             onlyoffice-desktopeditors
+            zoom-us
         ];
     };
 
