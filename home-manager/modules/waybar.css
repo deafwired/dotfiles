@@ -89,7 +89,7 @@ window#waybar {
     background: #f38ba8;
     color: white;
     animation-name: blink;
-    animation-duration: 0.5s;
+    animation-duration: 1s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;
