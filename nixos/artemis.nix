@@ -170,6 +170,7 @@
             neovim-remote
             android-tools
             pavucontrol
+            piper
             spotify
             onlyoffice-desktopeditors
             zoom-us
@@ -197,6 +198,7 @@
     };
 
     services.flatpak.enable = true;
+    services.ratbagd.enable = true;
 
     # List services that you want to enable:
     services.syncthing = {
