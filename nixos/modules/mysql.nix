@@ -15,6 +15,6 @@
     };
 
     environment.systemPackages = [
-        pkgs.pgadmin4-desktopmode
+        # pkgs.pgadmin4-desktopmode
     ];
 }
