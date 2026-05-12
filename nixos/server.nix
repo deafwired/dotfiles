@@ -244,7 +244,7 @@
             gcc
             home-manager
             screen
-            beets
+            pkgs-unstable.beets
             python315
             nodejs_24
         ];
