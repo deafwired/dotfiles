@@ -30,6 +30,18 @@
     # Enable networking
     networking.networkmanager.enable = true;
 
+    fileSystems."/mnt/hdd1" = {
+        device = "/dev/disk/by-uuid/7E20EF7A20EF3833";
+        fsType = "ntfs3";
+        options = [ "nofail" "x-systemd.automount" ];
+    };
+
+    fileSystems."/mnt/hdd2" = {
+        device = "/dev/disk/by-uuid/580A5B070A5AE214";
+        fsType = "ntfs3";
+        options = [ "nofail" "x-systemd.automount" ];
+    };
+
     # Set your time zone.
     time.timeZone = "America/New_York";
 
@@ -56,6 +68,7 @@
         };
         displayManager = {
             gdm.enable = true;
+            defaultSession = "niri";
         };
     };
 
@@ -100,6 +113,7 @@
 
 
     # programs.hyprland.enable = true;
+    programs.niri.enable = true;
     # Enable CUPS to print documents.
     services.printing.enable = true;
 
@@ -118,7 +132,12 @@
     };
 
     services.blueman.enable = true;
-    hardware.bluetooth.enable = true;
+    hardware.bluetooth = {
+        enable = true;
+        settings = {
+                General.Experimental = true;
+        };
+    };
 
     # Enable touchpad support (enabled default in most desktopManager).
     services.libinput.enable = true;
@@ -170,6 +189,7 @@
             neovim-remote
             android-tools
             pavucontrol
+            piper
             spotify
             onlyoffice-desktopeditors
             zoom-us
@@ -197,6 +217,7 @@
     };
 
     services.flatpak.enable = true;
+    services.ratbagd.enable = true;
 
     # List services that you want to enable:
     services.syncthing = {
