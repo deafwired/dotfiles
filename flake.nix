@@ -91,20 +91,20 @@
                                     path = "/data/copyparty/misc";
                                     access = {
                                         r = "*";
-                                        rwda = [ "matt" ];
+                                        rwmda = [ "matt" ];
                                     };
                                 };
                                 "/videos" = {
                                     path = "/data/copyparty/videos";
                                     access = {
                                         r = "*";
-                                        rwda = [ "matt" ];
+                                        rwmda = [ "matt" ];
                                     };
                                 };
                                 "/priv" = {
                                     path = "/data/copyparty/private";
                                     access = {
-                                        rwda = [ "matt" ];
+                                        rwmda = [ "matt" ];
                                     };
                                 };
                             };
