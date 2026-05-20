@@ -38,6 +38,10 @@ vim.keymap.set("n", "<M-a>", function()
     harpoon:list():add()
 end, { desc = "Harpoon add file" })
 
+vim.keymap.set("n", "<M-d>", function()
+    harpoon:list():remove()
+end, { desc = "Harpoon remove file" })
+
 vim.keymap.set("n", "<M-e>", function()
     harpoon.ui:toggle_quick_menu(harpoon:list())
 end, { desc = "Harpoon quick menu" })
