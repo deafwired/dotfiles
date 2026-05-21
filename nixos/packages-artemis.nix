@@ -22,6 +22,8 @@
         calibre
         openssl
         forge-mtg
+        blanket
+        foliate
     ];
 
     fonts = {
