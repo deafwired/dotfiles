@@ -39,8 +39,43 @@ vim.keymap.set("n", "<M-a>", function()
 end, { desc = "Harpoon add file" })
 
 vim.keymap.set("n", "<M-d>", function()
-    harpoon:list():remove()
-end, { desc = "Harpoon remove file" })
+    local list = harpoon:list()
+    local current_buf = vim.api.nvim_get_current_buf()
+    local current_file = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(current_buf), ":p")
+    
+    local index = -1
+    for i = 1, list:length() do
+        local item = list:get(i)
+        if item then
+            local item_file = vim.fn.fnamemodify(item.value, ":p")
+            if item_file == current_file then
+                index = i
+                break
+            end
+        end
+    end
+    
+    if index == -1 then
+        -- resort to default if can't find it
+        list:remove()
+        return
+    end
+    
+    -- Collect all items after the deleted index
+    local items_after = {}
+    for i = index + 1, list:length() do
+        local item = list:get(i)
+        if item then
+            table.insert(items_after, item)
+        end
+    end
+    
+    list:remove_at(index)
+    
+    for i, item in ipairs(items_after) do
+        list:replace_at(index + i - 1, item)
+    end
+end, { desc = "Harpoon remove file (with shift)" })
 
 vim.keymap.set("n", "<M-e>", function()
     harpoon.ui:toggle_quick_menu(harpoon:list())
