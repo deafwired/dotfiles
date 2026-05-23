@@ -24,6 +24,14 @@
     outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, copyparty, ...}@inputs:
         let
             system = "x86_64-linux";
+
+            mkHome = device: home-manager.lib.homeManagerConfiguration {
+                pkgs = nixpkgs.legacyPackages.${system};
+                extraSpecialArgs = { inherit device; };
+                modules = [
+                    ./home-manager/home.nix
+                ];
+            };
         in {
             nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
                 specialArgs = {
@@ -114,11 +122,11 @@
                 ];
             };
 
-            homeConfigurations.matt = home-manager.lib.homeManagerConfiguration {
-                pkgs = nixpkgs.legacyPackages.${system};
-                modules = [ 
-                    ./home-manager/home.nix
-                ];
+            homeConfigurations = {
+                matt = mkHome "default";
+                laptop = mkHome "laptop";
+                artemis = mkHome "artemis";
+                server = mkHome "server";
             };
         };
 }

@@ -1,4 +1,5 @@
-{ config, pkgs, ...}: {
+{ pkgs, ... }:
+{
     home.file.".config/hypr/rofi.sh".source = ./rofi.sh;
 
     wayland.windowManager.hyprland = {
@@ -10,8 +11,6 @@
             "$fileManager" = "files";
             "$menu" = "~/.config/hypr/rofi.sh";
             
-            monitor = ",preferred,auto,1";
-
             env = [
                 "GTK_THEME,Adwaita:dark"
                 "XCURSOR_SIZE,24"

@@ -1,0 +1,6 @@
+{ device, ... }:
+{
+  home = {
+    device = device;
+  };
+}
