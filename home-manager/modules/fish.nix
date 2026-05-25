@@ -14,7 +14,6 @@
 
         shellAliases = {
             rebuild = "sudo nix flake update --flake ~/dotfiles && sudo nixos-rebuild switch --flake ~/dotfiles";
-            hrebuild = "home-manager switch --flake ~/dotfiles";
             cd = "z";
             dim = "brightnessctl set 1";
             nf = "fastfetch";
@@ -27,6 +26,21 @@
         ];
 
         functions = {
+            hrebuild = {
+                body = ''
+                    switch (hostname)
+                        case artemis
+                            home-manager switch --flake ~/dotfiles#artemis
+                        case laptop
+                            home-manager switch --flake ~/dotfiles#laptop
+                        case server
+                            home-manager switch --flake ~/dotfiles#server
+                        case '*'
+                            home-manager switch --flake ~/dotfiles#matt
+                    end
+                '';
+            };
+
             starship_transient_prompt_func = {
                 body = "starship module character && echo";
             };

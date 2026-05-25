@@ -239,6 +239,10 @@
                     path = "/home/matt/Documents/Notes";
                     devices = ["MattsPhone" "laptop"];
                 };
+                "Books" = {
+                        path = "/home/matt/Books";
+                        devices = ["MattsPhone" "laptop"];
+                };
             };
             gui = {
                 user = "DeafWired";

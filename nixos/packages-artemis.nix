@@ -22,6 +22,9 @@
         calibre
         openssl
         forge-mtg
+        blanket
+        foliate
+        jellyfin-tui
     ];
 
     fonts = {
