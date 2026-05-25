@@ -75,6 +75,7 @@
     # Enable the X11 windowing system.
     services.xserver.enable = true;
 
+    services.flatpak.enable = true;
     hardware.nvidia.open = true;
     services.xserver.videoDrivers = [ "nvidia" ];
     hardware.graphics.enable = true;
@@ -117,6 +118,10 @@
                     path = "/data/Music";
                     devices = ["artemis" "MattsPhone"];
                     id = "musicROCKS";
+                };
+                "keepass" = {
+                    path = "/home/matt/Documents/Passwords";
+                    devices = ["MattsPhone" "artems"];
                 };
             };
         };

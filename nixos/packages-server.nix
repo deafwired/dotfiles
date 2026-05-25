@@ -4,5 +4,8 @@
     };
     environment.systemPackages = with pkgs; [
         steam-run
+        steam
+        vscode
+        keepassxc
     ];
 }
