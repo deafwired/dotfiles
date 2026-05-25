@@ -20,6 +20,7 @@
         libreoffice-qt6
         obs-studio
         calibre
+        orca-slicer
     ];
 
     fonts = {

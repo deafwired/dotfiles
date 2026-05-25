@@ -128,6 +128,13 @@
         user = "matt";
     };
 
+    # OctoPrint for the 3D printer connected to this server.
+    services.octoprint = {
+        enable = true;
+        host = "127.0.0.1";
+        openFirewall = false;
+    };
+
     # Slskd
     services.slskd = {
         enable = true;
@@ -212,6 +219,9 @@
                     };
                     "torrent.deafwired.dev" = {
                         service = "http://localhost:8080";
+                    };
+                    "octoprint.deafwired.dev" = {
+                        service = "http://localhost:5000";
                     };
                     "wishlist.deafwired.dev" = {
                             service = "http://localhost:3456";
