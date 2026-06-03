@@ -163,7 +163,7 @@
             devices = {
                 "MattsPhone" = { id = "HJTHW5F-MXLEMOB-SBHOO2E-4PFDNU7-RM7DPXN-67MABS7-KB3CKWN-G25QEQI";};
                 "artemis" = { id = "M574L33-U6QBYGE-7ZBJAEF-HEQKIVM-CFB5CU7-BZGBCZJ-3L2YYNG-NMR26AM";};
-                "server" = { id = "T3F7QXJ-CETLFWQ-TAJATCU-TLHM2WC-VZVUXIP-MCZZNRT-4ASUBME-K73BPQT"};
+                "server" = { id = "T3F7QXJ-CETLFWQ-TAJATCU-TLHM2WC-VZVUXIP-MCZZNRT-4ASUBME-K73BPQT";};
             };
             folders = {
                 "Documents" = {

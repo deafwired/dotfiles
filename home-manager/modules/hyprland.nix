@@ -72,7 +72,6 @@
             };
             
             dwindle = {
-                pseudotile = true;
                 preserve_split = true;
             };
 
@@ -116,7 +115,7 @@
                 "$mainMod, V, togglefloating,"
                 "$mainMod, R, exec, $menu"
                 "$mainMod, P, pseudo," # dwindle
-                "$mainMod, SPACE, togglesplit, # dwindle"
+                "$mainMod, SPACE, layoutmsg, togglesplit" # dwindle
 
                 # Move focus with mainMod + vim movement
                 "$mainMod, h, movefocus, l"
@@ -188,11 +187,11 @@
                 ", XF86AudioNext, exec, playerctl next"
                 ", XF86AudioPrev, exec, playerctl previous"
             ];
-            windowrulev2 = [
-                "suppressevent maximize, class:.*"
-                "workspace special:magic silent, class:^(obsidian|Obsidian)$"
-                "float, class:^(org.keepassxc.KeePassXC)$"
-                "size 900 700, class:^(org.keepassxc.KeePassXC)$"
+            windowrule = [
+                "suppress_event maximize, match:class .*"
+                "workspace special:magic silent, match:class ^(obsidian|Obsidian)$"
+                "float on, match:class ^(org.keepassxc.KeePassXC)$"
+                "size 900 700, match:class ^(org.keepassxc.KeePassXC)$"
             ];
         };
     };
