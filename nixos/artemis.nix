@@ -132,12 +132,7 @@
     };
 
     services.blueman.enable = true;
-    hardware.bluetooth = {
-        enable = true;
-        settings = {
-                General.Experimental = true;
-        };
-    };
+    hardware.bluetooth.enable = true;
 
     # Enable touchpad support (enabled default in most desktopManager).
     services.libinput.enable = true;
