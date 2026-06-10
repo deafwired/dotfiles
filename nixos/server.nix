@@ -76,9 +76,17 @@
     services.xserver.enable = true;
 
     services.flatpak.enable = true;
-    hardware.nvidia.open = true;
     services.xserver.videoDrivers = [ "nvidia" ];
     hardware.graphics.enable = true;
+    hardware.graphics.enable32Bit = true;
+    hardware.nvidia = {
+        modesetting.enable = true;
+        open = true;
+        nvidiaSettings = true;
+        powerManagement.enable = true;
+        powerManagement.finegrained = false;
+        package = config.boot.kernelPackages.nvidiaPackages.stable;
+    };
 
     # Enable the GNOME Desktop Environment.
     services.displayManager.gdm = {
@@ -87,6 +95,19 @@
     };
     services.desktopManager.gnome.enable = true;
 
+    programs.dconf = {
+        enable = true;
+        profiles.user.databases = [
+            {
+                settings = {
+                    "org/gnome/desktop/interface" = {
+                        color-scheme = "prefer-dark";
+                        gtk-theme = "Adwaita-dark";
+                    };
+                };
+            }
+        ];
+    };
     # Configure keymap in X11
     services.xserver.xkb = {
         layout = "us";
@@ -121,7 +142,7 @@
                 };
                 "keepass" = {
                     path = "/home/matt/Documents/Passwords";
-                    devices = ["MattsPhone" "artems"];
+                    devices = ["MattsPhone" "artemis" "laptop"];
                 };
             };
         };
