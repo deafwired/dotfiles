@@ -132,12 +132,7 @@
     };
 
     services.blueman.enable = true;
-    hardware.bluetooth = {
-        enable = true;
-        settings = {
-                General.Experimental = true;
-        };
-    };
+    hardware.bluetooth.enable = true;
 
     # Enable touchpad support (enabled default in most desktopManager).
     services.libinput.enable = true;
@@ -162,11 +157,11 @@
     services.fwupd.package = (import (builtins.fetchTarball {
                 url = "https://github.com/NixOS/nixpkgs/archive/bb2009ca185d97813e75736c2b8d1d8bb81bde05.tar.gz";
                 sha256 = "sha256:003qcrsq5g5lggfrpq31gcvj82lb065xvr7bpfa8ddsw8x4dnysk";
-    }) { inherit (pkgs) system; }).fwupd;
+    }) { system = pkgs.stdenv.hostPlatform.system; }).fwupd;
 
-    security.pam.services.sudo.fprintAuth = true;
+    security.pam.services.sudo.fprintAuth = false;
     security.pam.services.hyprlock.fprintAuth = false;
-    security.pam.services.gdm-fingerprint.fprintAuth = true;
+    security.pam.services.gdm-fingerprint.fprintAuth = false;
 
     # Define a user account. Don't forget to set a password with ‘passwd’.
     users.users.matt = {

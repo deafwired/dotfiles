@@ -53,8 +53,14 @@
         desktopManager = {
             gnome.enable = true;
         };
-        displayManager = {
-            gdm.enable = true;
+        greetd = {
+            enable = true;
+            settings = {
+                default_session = {
+                    user = "greeter";
+                    command = "${pkgs.tuigreet}/bin/tuigreet --issue --time --remember --remember-session --cmd Hyprland";
+                };
+            };
         };
     };
     # Configure keymap in X11
@@ -94,16 +100,26 @@
     # Enable touchpad support (enabled default in most desktopManager).
     services.libinput.enable = true;
 
-    # Fingerprint shenanigans
     services.fwupd.enable = true;
     services.fwupd.package = (import (builtins.fetchTarball {
                 url = "https://github.com/NixOS/nixpkgs/archive/bb2009ca185d97813e75736c2b8d1d8bb81bde05.tar.gz";
                 sha256 = "sha256:003qcrsq5g5lggfrpq31gcvj82lb065xvr7bpfa8ddsw8x4dnysk";
-    }) { inherit (pkgs) system; }).fwupd;
+    }) { system = pkgs.stdenv.hostPlatform.system; }).fwupd;
 
-    security.pam.services.sudo.fprintAuth = true;
-    security.pam.services.hyprlock.fprintAuth = false;
-    security.pam.services.gdm-fingerprint.fprintAuth = true;
+    environment.etc.issue.text = "
+        _-_.
+     _-',^. `-_.
+ ._-' ,'   `.   `-_ 
+!`-_._________`-':::
+!   /\        /\::::
+;  /  \      /..\:::
+! /    \    /....\::
+!/      \  /......\:
+;--.___. \/_.__.--;; 
+ '-_    `:!;;;;;;;'
+    `-_, :!;;;''
+        `-!'        
+    ";
 
     # Define a user account. Don't forget to set a password with ‘passwd’.
     users.users.matt = {
@@ -163,7 +179,7 @@
             devices = {
                 "MattsPhone" = { id = "HJTHW5F-MXLEMOB-SBHOO2E-4PFDNU7-RM7DPXN-67MABS7-KB3CKWN-G25QEQI";};
                 "artemis" = { id = "M574L33-U6QBYGE-7ZBJAEF-HEQKIVM-CFB5CU7-BZGBCZJ-3L2YYNG-NMR26AM";};
-                "server" = { id = "T3F7QXJ-CETLFWQ-TAJATCU-TLHM2WC-VZVUXIP-MCZZNRT-4ASUBME-K73BPQT"};
+                "server" = { id = "T3F7QXJ-CETLFWQ-TAJATCU-TLHM2WC-VZVUXIP-MCZZNRT-4ASUBME-K73BPQT";};
             };
             folders = {
                 "Documents" = {

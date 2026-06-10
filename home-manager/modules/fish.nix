@@ -19,6 +19,7 @@
             nf = "fastfetch";
             nix-shell = "nix-shell --run fish";
             lg = "lazygit";
+            vi = "nvim";
         };
 
         plugins = [
