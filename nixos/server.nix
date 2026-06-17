@@ -221,6 +221,23 @@
         };
     };
 
+    # Home Assistant
+    services.home-assistant = {
+        enable = true;
+        openFirewall = true;
+        config = {
+            homeassistant = {
+                name = "Home";
+                time_zone = "America/New_York";
+            };
+            http = {
+                server_port = 8123;
+                use_x_forwarded_for = true;
+                trusted_proxies = [ "127.0.0.1" "::1" ];
+            };
+        };
+    };
+
     # cloudflared
     services. cloudflared = {
         enable = true;
@@ -248,6 +265,9 @@
                     };
                     "octoprint.deafwired.dev" = {
                         service = "http://localhost:5000";
+                    };
+                    "homeassistant.deafwired.dev" = {
+                        service = "http://localhost:8123";
                     };
                     "wishlist.deafwired.dev" = {
                             service = "http://localhost:3456";

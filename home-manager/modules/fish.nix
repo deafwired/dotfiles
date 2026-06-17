@@ -18,6 +18,7 @@
             dim = "brightnessctl set 1";
             nf = "fastfetch";
             nix-shell = "nix-shell --run fish";
+            ls = "ls --color=auto";
             lg = "lazygit";
             vi = "nvim";
         };
