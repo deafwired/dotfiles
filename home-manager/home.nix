@@ -16,5 +16,11 @@
         };
     };
 
+    # make gnome actually dark mode
+    dconf = {
+        enable = true;
+        settings."org/gnome/decktop/interface".color-scheme = "prefer-dark";
+    };
+
     home.packages = with pkgs; [ neovim ];
 }

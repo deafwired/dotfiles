@@ -25,6 +25,7 @@
         blanket
         foliate
         jellyfin-tui
+        parsec-bin
     ];
 
     fonts = {

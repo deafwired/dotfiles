@@ -68,7 +68,6 @@
         };
         displayManager = {
             gdm.enable = true;
-            defaultSession = "niri";
         };
     };
 
@@ -125,10 +124,39 @@
         alsa.support32Bit = true;
         pulse.enable = true;
         jack.enable = true;
+        wireplumber.extraConfig = {
+            "microphone-volume" = {
+                "monitor.alsa.rules" = [
+                {
+                    matches = [
+                    { "node.name" = "alsa_input.usb-Generic_Blue_Microphones_LT_2417SQ00259862900046_111000-00.analog-stereo"; }
+                    ];
+                    actions = {
+                        update-props = {
+                            "node.volume" = 1.25;
+                        };
+                    };
+                }
+                ];
+            };
+            "disable-mic-restore" = {
+                "monitor.alsa.rules" = [
+                {
+                    matches = [
+                    { "node.name" = "alsa_input.usb-Generic_Blue_Microphones_LT_2417SQ00259862900046_111000-00.analog-stereo"; }
+                    ];
+                    actions = {
+                        update-props = {
+                            "node.volume" = 1.25;
+                            "stream.don-remix" = true;
+                            "state.restore-props" = false;
+                        };
+                    };
+                }
+                ];
+            };
+        };
 
-        # use the example session manager (no others are packaged yet so this is enabled by default,
-        # no need to redefine it in your config for now)
-        #media-session.enable = true;
     };
 
     services.blueman.enable = true;
