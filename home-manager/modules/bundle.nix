@@ -3,6 +3,7 @@
     imports =
         [
             ./fish.nix
+            ./firefox.nix
             ./hyprland.nix
             ./niri.nix
             ./waybar.nix
