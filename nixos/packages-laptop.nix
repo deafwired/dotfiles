@@ -22,6 +22,7 @@
         calibre
         orca-slicer
         jetbrains.idea
+        btop
     ];
 
     fonts = {
