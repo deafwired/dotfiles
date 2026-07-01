@@ -4,6 +4,7 @@
 
     wayland.windowManager.hyprland = {
         enable = true;
+        configType = "hyprlang";
         settings = {
             "$mainMod" = "SUPER";
             "$terminal" = "kitty";
@@ -21,8 +22,8 @@
                 gaps_in = 5;
                 gaps_out = 20;
                 border_size = 5;
-                "col.active_border" = "rgba(ba071aff)";
-                "col.inactive_border" =  "rgba(59595980)";
+                "col.active_border" = "rgba(a7c080ff)";
+                "col.inactive_border" = "rgba(414b5080)";
                 resize_on_border = false;
                 allow_tearing = false;
                 layout = "dwindle";
@@ -40,7 +41,7 @@
             ];
     
             decoration = {
-                rounding = 10;
+                rounding = 0;
                 active_opacity = 1;
                 inactive_opacity = 1;
                 shadow = {

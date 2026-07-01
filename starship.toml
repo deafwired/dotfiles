@@ -11,7 +11,7 @@ $all[╰─](238)$character"""
 # Change the default prompt characters
 [character]
 success_symbol = "[>](238)"
-error_symbol = "[>](#ff0000)"
+error_symbol = "[>](#f38ba8)"
 
 # Shows an icon that should be included by zshrc script based on the distribution or os
 [env_var.STARSHIP_DISTRO]
@@ -31,7 +31,7 @@ show_always = true
 truncation_length = 3
 truncation_symbol = "…/"
 home_symbol = " ~"
-style = "#ba071a"
+style = "#cba6f7"
 read_only_style = "197"
 read_only = "  "
 format = "@ [$path]($style)[$read_only]($read_only_style) "

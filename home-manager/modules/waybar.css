@@ -3,37 +3,36 @@
     font-size: 16px;
     min-height: 30px;
     font-family: "Pixel Code";
-    /* height: 30px; */
 }
 
 window#waybar {
     background: transparent;
-    color: #ffffff;
+    color: #d3c6aa;
 }
 
 #workspaces {
-    border-radius: 10px;
-    background-color: #000000;
+    border-radius: 0;
+    background-color: #272e33;
     margin-top: 20px;
     margin-left: 20px;
     margin-right: 20px;
     padding-top: 1px;
     padding-left: 10px;
     padding-right: 10px;
-    border-color: #ba071a;
+    border-color: #a7c080;
     border-width: 5px;
     border-style: solid;
 }
 
 #window {
-    border-radius: 10px;
+    border-radius: 0;
     margin-top: 20px;
     margin-right: 20px;
     padding-top: 1px;
     padding-left: 10px;
     padding-right: 10px;
-    background-color: #000000;
-    border-color: #ba071a;
+    background-color: #272e33;
+    border-color: #a7c080;
     border-width: 5px;
     border-style: solid;
 }
@@ -48,12 +47,13 @@ window#waybar {
 }
 
 #workspaces button {
-    background: #000000;
-    color: #ffffff;
+    background: #272e33;
+    color: #d3c6aa;
 }
 
 #workspaces button.active {
     font-weight: bold;
+    color: #a7c080;
 }
 
 #clock,
@@ -66,28 +66,28 @@ window#waybar {
 #tray,
 #custom-wttrbar,
 #memory {
-    border-radius: 10px;
-    background-color: #000000;
-    color: #ffffff;
+    border-radius: 0;
+    background-color: #272e33;
+    color: #d3c6aa;
     margin-top: 20px;
     padding-left: 9px;
     padding-right: 9px;
     margin-right: 20px;
-    border-color: #ba071a;
+    border-color: #a7c080;
     border-width: 5px;
     border-style: solid;
 }
 
 @keyframes blink {
     to {
-        background-color: #ffffff;
-        color: black;
+        background-color: #e67e80;
+        color: #272e33;
     }
 }
 
 #battery.warning:not(.charging) {
-    background: #f38ba8;
-    color: white;
+    background: #e67e80;
+    color: #272e33;
     animation-name: blink;
     animation-duration: 1s;
     animation-timing-function: linear;
@@ -95,23 +95,7 @@ window#waybar {
     animation-direction: alternate;
 }
 
-/* #pulseaudio { */
-/*   font-size: 20px; */
-/* 	margin-left: 20px; */
-/* } */
-
 #tray {
     padding-left: 10px;
     padding-right: 10px;
 }
-
-/* #pulseaudio { */
-/*   border-radius: 10px; */
-/*   background-color: #11111b; */
-/*   color: #cba6f7; */
-/*   margin-top: 20px; */
-/* 	margin-right: 20px; */
-/*   padding-top: 1px; */
-/*   padding-left: 10px; */
-/*   padding-right: 10px; */
-/* } */

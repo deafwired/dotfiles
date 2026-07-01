@@ -26,7 +26,7 @@
         truncation_length = 3;
         truncation_symbol = "…/";
         home_symbol = " ~";
-        style = "#ba071a";
+        style = "#a7c080";
         read_only_style = "197";
         read_only = "  ";
         format = "@ [$path]($style)[$read_only]($read_only_style) ";

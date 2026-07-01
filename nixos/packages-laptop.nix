@@ -21,6 +21,7 @@
         obs-studio
         calibre
         orca-slicer
+        jetbrains.idea
     ];
 
     fonts = {

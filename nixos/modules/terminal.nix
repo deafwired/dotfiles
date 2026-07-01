@@ -1,6 +1,7 @@
 { pkgs, ...}: {
     environment.systemPackages = with pkgs; [
         # neovim
+        claude-code
         ripgrep
         git
         fish

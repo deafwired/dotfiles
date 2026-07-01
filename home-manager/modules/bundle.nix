@@ -1,6 +1,6 @@
 { device, lib, ... }:
 {
-    imports = 
+    imports =
         [
             ./fish.nix
             ./hyprland.nix
@@ -8,6 +8,8 @@
             ./waybar.nix
             ./dunst.nix
             ./starship.nix
+            ./wofi.nix
+            ./lazygit.nix
             # ./kitty.nix
         ] ++ lib.optionals (device == "artemis") [ ./hyprland-artemis.nix ] ++ lib.optionals (device != "artemis") [ ./hyprland-default.nix ];
 }

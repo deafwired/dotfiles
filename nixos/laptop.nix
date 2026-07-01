@@ -79,7 +79,7 @@
     services.pipewire = {
         enable = true;
         alsa.enable = true;
-        alsa.support32Bit = true;
+        alsa.support32Bit = false;
         pulse.enable = true;
         # If you want to use JACK applications, uncomment this
         #jack.enable = true;
@@ -128,7 +128,6 @@
         description = "matt";
         extraGroups = [ "networkmanager" "wheel" ];
         packages = with pkgs; [
-            vesktop
             wofi
             waybar
             wttrbar
@@ -148,6 +147,7 @@
             pandoc
         ];
     };
+
 
     # Install firefox.
     programs.firefox.enable = true;
