@@ -17,6 +17,8 @@
         htop
         kitty
         zip
+        glibcInfo
+        man-pages
         starship
     ];
 }

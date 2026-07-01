@@ -15,7 +15,7 @@
             url = "github:danth/stylix/release-26.05";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-
+        nix-alien.url = "github:thiagokokada/nix-alien";
         nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
         copyparty.url = "github:9001/copyparty";
@@ -66,6 +66,10 @@
                 modules = [
                     ({ ... }: {
                         nixpkgs.overlays = [ (import ./nixos/overlays/spotx.nix) ];
+                        environment.systemPackages = with self.inputs.nix-alien.packages.${system}; [
+                            nix-alien
+                        ];
+                        programs.nix-ld.enable = true;
                     })
                     ./nixos/artemis.nix
                 ];

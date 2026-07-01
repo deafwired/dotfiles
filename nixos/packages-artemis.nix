@@ -1,4 +1,4 @@
-{ pkgs, ...}: {
+{ pkgs, pkgs-unstable, ...}: {
     nixpkgs.config = {
         allowUnfree = true;
     };
@@ -21,7 +21,7 @@
         obs-studio
         calibre
         openssl
-        forge-mtg
+        pkgs-unstable.forge-mtg
         blanket
         foliate
         jellyfin-tui

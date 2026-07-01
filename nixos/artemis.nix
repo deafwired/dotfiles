@@ -121,7 +121,7 @@
     services.pipewire = {
         enable = true;
         alsa.enable = true;
-        alsa.support32Bit = true;
+        # alsa.support32Bit = true;
         pulse.enable = true;
         jack.enable = true;
         wireplumber.extraConfig = {
@@ -134,26 +134,16 @@
                     actions = {
                         update-props = {
                             "node.volume" = 1.25;
+                            "node.lock-volume" = true;
                         };
                     };
                 }
                 ];
             };
-            "disable-mic-restore" = {
-                "monitor.alsa.rules" = [
-                {
-                    matches = [
-                    { "node.name" = "alsa_input.usb-Generic_Blue_Microphones_LT_2417SQ00259862900046_111000-00.analog-stereo"; }
-                    ];
-                    actions = {
-                        update-props = {
-                            "node.volume" = 1.25;
-                            "stream.don-remix" = true;
-                            "state.restore-props" = false;
-                        };
-                    };
-                }
-                ];
+            "disable-flat-volumes" = {
+                "pulse.properties" = {
+                    "pulse.flat-volumes" = false;
+                };
             };
         };
 
@@ -198,7 +188,7 @@
         description = "matt";
         extraGroups = [ "networkmanager" "wheel" ];
         packages = with pkgs; [
-            vesktop
+            pkgs-unstable.vesktop
             wofi
             waybar
             wttrbar
