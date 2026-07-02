@@ -27,8 +27,9 @@
 
             mkHome = device: home-manager.lib.homeManagerConfiguration {
                 pkgs = nixpkgs.legacyPackages.${system};
-                extraSpecialArgs = { inherit device; };
+                extraSpecialArgs = { inherit device inputs; };
                 modules = [
+                    inputs.stylix.homeModules.stylix
                     ./home-manager/home.nix
                 ];
             };
@@ -47,6 +48,7 @@
                 };
                 modules = [
                     inputs.nixos-hardware.nixosModules.framework-13th-gen-intel
+                    inputs.stylix.nixosModules.stylix
                     ./nixos/laptop.nix
                 ];
             };
@@ -71,6 +73,7 @@
                         ];
                         programs.nix-ld.enable = true;
                     })
+                    inputs.stylix.nixosModules.stylix
                     ./nixos/artemis.nix
                 ];
             };

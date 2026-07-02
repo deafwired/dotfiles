@@ -6,5 +6,6 @@
             ./languages.nix
             ./terminal.nix
             ./mysql.nix
+            ./stylix.nix
         ];
 }

@@ -7,5 +7,6 @@
             ./mysql.nix
             ./ai.nix
             ./cyber.nix
+            ./stylix.nix
         ];
 }

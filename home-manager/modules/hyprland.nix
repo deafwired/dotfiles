@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, ... }:
 {
     home.file.".config/hypr/rofi.sh".source = ./rofi.sh;
 
@@ -12,18 +12,12 @@
             "$fileManager" = "files";
             "$menu" = "~/.config/hypr/rofi.sh";
             
-            env = [
-                "GTK_THEME,Adwaita:dark"
-                "XCURSOR_SIZE,24"
-                "HYPRCURSOR_SIZE,24"
-            ];
-
             general = {
                 gaps_in = 5;
                 gaps_out = 20;
                 border_size = 5;
-                "col.active_border" = "rgba(a7c080ff)";
-                "col.inactive_border" = "rgba(414b5080)";
+                "col.active_border" = "rgb(${config.lib.stylix.colors.base0B})";
+                "col.inactive_border" = "rgba(${config.lib.stylix.colors.base02}80)";
                 resize_on_border = false;
                 allow_tearing = false;
                 layout = "dwindle";
@@ -34,7 +28,7 @@
             };
             
             exec-once = [
-                "swaybg -i ~/Desktop/background.png"
+                "swaybg -i ${config.stylix.image}"
                 "waybar -b mainBar"
                 "dunst"
                 "[workspace special:magic silent] obsidian"

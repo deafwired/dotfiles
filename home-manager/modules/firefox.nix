@@ -84,8 +84,7 @@
         # PDF viewer
         "pdfjs.defaultZoomValue" = "page-width";
 
-        # Reader mode
-        "reader.color_scheme" = "contrast";
+        # Reader mode (color_scheme comes from stylix)
         "reader.content_width" = 5;
 
         # AI chat — set to Claude
