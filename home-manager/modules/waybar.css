@@ -1,25 +1,24 @@
+/* font and palette (@base00 etc) are defined from stylix in waybar.nix */
 * {
     border: none;
-    font-size: 16px;
     min-height: 30px;
-    font-family: "Pixel Code";
 }
 
 window#waybar {
     background: transparent;
-    color: #d3c6aa;
+    color: @base05;
 }
 
 #workspaces {
     border-radius: 0;
-    background-color: #272e33;
+    background-color: @base00;
     margin-top: 20px;
     margin-left: 20px;
     margin-right: 20px;
     padding-top: 1px;
     padding-left: 10px;
     padding-right: 10px;
-    border-color: #a7c080;
+    border-color: @base0B;
     border-width: 5px;
     border-style: solid;
 }
@@ -31,8 +30,8 @@ window#waybar {
     padding-top: 1px;
     padding-left: 10px;
     padding-right: 10px;
-    background-color: #272e33;
-    border-color: #a7c080;
+    background-color: @base00;
+    border-color: @base0B;
     border-width: 5px;
     border-style: solid;
 }
@@ -47,13 +46,13 @@ window#waybar {
 }
 
 #workspaces button {
-    background: #272e33;
-    color: #d3c6aa;
+    background: @base00;
+    color: @base05;
 }
 
 #workspaces button.active {
     font-weight: bold;
-    color: #a7c080;
+    color: @base0B;
 }
 
 #clock,
@@ -67,27 +66,27 @@ window#waybar {
 #custom-wttrbar,
 #memory {
     border-radius: 0;
-    background-color: #272e33;
-    color: #d3c6aa;
+    background-color: @base00;
+    color: @base05;
     margin-top: 20px;
     padding-left: 9px;
     padding-right: 9px;
     margin-right: 20px;
-    border-color: #a7c080;
+    border-color: @base0B;
     border-width: 5px;
     border-style: solid;
 }
 
 @keyframes blink {
     to {
-        background-color: #e67e80;
-        color: #272e33;
+        background-color: @base08;
+        color: @base00;
     }
 }
 
 #battery.warning:not(.charging) {
-    background: #e67e80;
-    color: #272e33;
+    background: @base08;
+    color: @base00;
     animation-name: blink;
     animation-duration: 1s;
     animation-timing-function: linear;

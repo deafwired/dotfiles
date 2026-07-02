@@ -93,6 +93,15 @@
                 };
             };
         };
-        style = ./waybar.css;
+        style = ''
+            @define-color base00 ${config.lib.stylix.colors.withHashtag.base00};
+            @define-color base05 ${config.lib.stylix.colors.withHashtag.base05};
+            @define-color base08 ${config.lib.stylix.colors.withHashtag.base08};
+            @define-color base0B ${config.lib.stylix.colors.withHashtag.base0B};
+            * {
+                font-family: "${config.stylix.fonts.monospace.name}";
+                font-size: ${toString config.stylix.fonts.sizes.desktop}px;
+            }
+        '' + builtins.readFile ./waybar.css;
     };
 }
