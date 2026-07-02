@@ -30,7 +30,6 @@
             exec-once = [
                 "swaybg -i ${config.stylix.image}"
                 "waybar -b mainBar"
-                "dunst"
                 "[workspace special:magic silent] obsidian"
             ];
     

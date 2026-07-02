@@ -1,10 +1,26 @@
-{ config, pkgs, ... }:
+{ ... }:
 {
-  # Install dunst so the binary is available to the user
-  home.packages = with pkgs; [ dunst ];
+    # font and everforest colors come from stylix
+    services.dunst = {
+        enable = true;
+        settings = {
+            global = {
+                transparency = 0;
+                frame_width = 5;
+                separator_height = 1;
 
-  # Ensure the dunstrc is written to the user's config directory
-  home.file.".config/dunst/dunstrc" = {
-    text = builtins.readFile ./dunstrc;
-  };
+                origin = "top-right";
+                alignment = "right";
+                sort = "oldest";
+                follow = "mouse";
+                offset = "20x20";
+                padding = 10;
+                corner_radius = 0;
+            };
+
+            urgency_low.timeout = 5;
+            urgency_normal.timeout = 10;
+            urgency_critical.timeout = 0;
+        };
+    };
 }
