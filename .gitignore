@@ -21,6 +21,10 @@
 !home-manager/*
 !home-manager/**/
 !home-manager/**/*
+!wallpapers/
+!wallpapers/*
+!stylix/
+!stylix/*
 !flake.nix
 flake.lock
 /nvim/lazy-lock.json
