@@ -78,8 +78,8 @@
             {
                 settings = {
                     "org/gnome/desktop/interface" = {
+                        # pre-login default; the session gtk theme comes from stylix
                         color-scheme = "prefer-dark";
-                        gtk-theme = "Adwaita-dark";
                     };
                 };
             }

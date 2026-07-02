@@ -16,11 +16,8 @@
         };
     };
 
-    # make gnome actually dark mode
-    dconf = {
-        enable = true;
-        settings."org/gnome/decktop/interface".color-scheme = "prefer-dark";
-    };
+    # gnome dark mode / gtk theme come from stylix
+    dconf.enable = true;
 
     home.packages = with pkgs; [ neovim ];
 }
