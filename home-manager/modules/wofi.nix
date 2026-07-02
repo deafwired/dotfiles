@@ -1,4 +1,7 @@
-{ config, pkgs, ... }: {
+{ config, ... }:
+let
+    c = config.lib.stylix.colors.withHashtag;
+in {
     programs.wofi = {
         enable = true;
         settings = {
@@ -20,8 +23,8 @@
         };
         style = ''
             * {
-                font-family: "Pixel Code";
-                font-size: 16px;
+                font-family: "${config.stylix.fonts.monospace.name}";
+                font-size: ${toString config.stylix.fonts.sizes.desktop}px;
             }
 
             window {
@@ -30,16 +33,16 @@
             }
 
             #outer-box {
-                background-color: #272e33;
-                border: 5px solid #a7c080;
+                background-color: ${c.base00};
+                border: 5px solid ${c.base0B};
                 padding: 0;
             }
 
             #input {
-                background-color: #2e383c;
-                color: #d3c6aa;
+                background-color: ${c.base01};
+                color: ${c.base05};
                 border: none;
-                border-bottom: 2px solid #414b50;
+                border-bottom: 2px solid ${c.base02};
                 border-radius: 0;
                 padding: 10px;
                 margin: 0;
@@ -47,31 +50,31 @@
             }
 
             #inner-box {
-                background-color: #272e33;
+                background-color: ${c.base00};
             }
 
             #scroll {
-                background-color: #272e33;
+                background-color: ${c.base00};
                 margin: 0;
             }
 
             #text {
-                color: #d3c6aa;
+                color: ${c.base05};
                 padding: 4px 8px;
             }
 
             #entry {
-                background-color: #272e33;
+                background-color: ${c.base00};
                 border-radius: 0;
                 padding: 6px 10px;
             }
 
             #entry:selected {
-                background-color: #2e383c;
+                background-color: ${c.base01};
             }
 
             #entry:selected #text {
-                color: #a7c080;
+                color: ${c.base0B};
             }
 
             #img {
