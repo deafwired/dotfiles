@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 {
     # Symlink the rofi launcher script so both Hyprland and Niri can use it
     home.file.".config/niri/rofi.sh".source = ./rofi.sh;
@@ -20,17 +20,20 @@
             workspace-auto-back-and-forth
         }
 
-        environment {
-            GTK_THEME "Adwaita:dark"
-        }
-
         cursor {
-            xcursor-size 24
+            xcursor-theme "${config.stylix.cursor.name}"
+            xcursor-size ${toString config.stylix.cursor.size}
         }
 
-        spawn-sh-at-startup "swaybg -i ~/Desktop/background.png"
+        layout {
+            focus-ring {
+                active-color "${config.lib.stylix.colors.withHashtag.base0B}"
+                inactive-color "${config.lib.stylix.colors.withHashtag.base02}"
+            }
+        }
+
+        spawn-sh-at-startup "swaybg -i ${config.stylix.image}"
         spawn-at-startup "waybar"
-        spawn-at-startup "dunst"
 
         binds {
             Mod+Return { spawn "kitty"; }
