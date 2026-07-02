@@ -31,6 +31,7 @@
                 "swaybg -i ${config.stylix.image}"
                 "waybar -b mainBar"
                 "[workspace special:magic silent] obsidian"
+                "[workspace 10 silent] keepassxc"
             ];
     
             decoration = {
