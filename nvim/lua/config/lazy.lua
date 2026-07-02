@@ -19,7 +19,6 @@ vim.opt.rtp:prepend(lazypath)
 -- loading lazy.nvim so that mappings are correct.
 -- This is also a good place to setup other settings (vim.opt)
 
--- setting indents
 vim.opt.expandtab = true
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
@@ -27,29 +26,22 @@ vim.opt.shiftwidth = 4
 vim.opt.smartindent = true
 vim.opt.breakindent = true
 
--- color column
 vim.opt.colorcolumn = "120"
 
--- leader
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
--- numbers
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.fillchars = { eob = " " }
 
--- searching
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
--- clipboard
 vim.opt.clipboard = "unnamedplus"
 
--- no wrap
 vim.opt.wrap = false
 
--- coloring
 vim.o.termguicolors = true
 vim.o.background = "dark"
 

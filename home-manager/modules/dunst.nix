@@ -1,6 +1,5 @@
-{ ... }:
+{ config, lib, ... }:
 {
-    # font and everforest colors come from stylix
     services.dunst = {
         enable = true;
         settings = {
@@ -19,7 +18,11 @@
             };
 
             urgency_low.timeout = 5;
-            urgency_normal.timeout = 10;
+            urgency_normal = {
+                timeout = 10;
+                frame_color = lib.mkForce config.lib.stylix.colors.withHashtag.base0B;
+                highlight = lib.mkForce config.lib.stylix.colors.withHashtag.base0B;
+            };
             urgency_critical.timeout = 0;
         };
     };

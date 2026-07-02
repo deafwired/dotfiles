@@ -2,10 +2,11 @@
 {
     programs.kitty = {
         enable = true;
-        # font and everforest colors come from stylix
+        shellIntegration.mode = "no-cursor";
         settings = {
             confirm_os_window_close = 0;
             disable_ligatures = "never";
+            cursor_shape = "block";
         };
         extraConfig = ''
             # Seti-UI + Custom

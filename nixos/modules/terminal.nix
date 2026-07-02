@@ -1,7 +1,7 @@
-{ pkgs, ...}: {
+{ pkgs, pkgs-unstable, ...}: {
     environment.systemPackages = with pkgs; [
         # neovim
-        claude-code
+        pkgs-unstable.claude-code
         ripgrep
         git
         fish

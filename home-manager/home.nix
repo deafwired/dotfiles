@@ -16,7 +16,6 @@
         };
     };
 
-    # gnome dark mode / gtk theme come from stylix
     dconf.enable = true;
 
     home.packages = with pkgs; [ neovim ];
