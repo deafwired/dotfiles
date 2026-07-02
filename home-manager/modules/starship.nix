@@ -1,4 +1,4 @@
-{ config, pkgs, ...}: {
+{ config, ...}: {
   programs.starship = {
     enable = true;
     settings = {
@@ -26,7 +26,7 @@
         truncation_length = 3;
         truncation_symbol = "…/";
         home_symbol = " ~";
-        style = "#a7c080";
+        style = "${config.lib.stylix.colors.withHashtag.base0B}";
         read_only_style = "197";
         read_only = "  ";
         format = "@ [$path]($style)[$read_only]($read_only_style) ";

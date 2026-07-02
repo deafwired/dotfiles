@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, ... }:
 {
   programs.firefox = {
     enable = true;
@@ -8,7 +8,7 @@
       userContent = ''
         @-moz-document url(about:newtab), url(about:home) {
           body {
-            background-color: #2d353b !important;
+            background-color: ${config.lib.stylix.colors.withHashtag.base00} !important;
           }
 
           /* Hide everything — search bar, logo, top sites, highlights, weather */
