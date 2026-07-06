@@ -23,6 +23,7 @@
         orca-slicer
         jetbrains.idea
         btop
+        zoom-us
     ];
 
     fonts = {

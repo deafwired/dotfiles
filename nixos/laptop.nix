@@ -56,6 +56,15 @@
 
     services.printing.enable = true;
 
+    # drexel printer
+
+    hardware.printers.ensurePrinters = [{
+        name = "cci-printer";
+        deviceUri = "ipp://10.248.127.206/ipp/print";
+        model = "everywhere";
+        ppdOptions.PageSize = "Letter";
+    }];
+
     hardware.graphics.enable32Bit = true;
     security.rtkit.enable = true;
     services.pipewire = {
