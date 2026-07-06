@@ -2,6 +2,9 @@
 {
   programs.firefox = {
     enable = true;
+    # Pin to the legacy path; home.stateVersion predates the new XDG default
+    # and switching requires manually migrating ~/.mozilla/firefox.
+    configPath = ".mozilla/firefox";
     profiles.default = {
       id = 0;
 
