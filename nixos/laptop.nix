@@ -111,20 +111,7 @@
         description = "matt";
         extraGroups = [ "networkmanager" "wheel" ];
         packages = with pkgs; [
-            wofi
-            waybar
-            wttrbar
-            chromium
-            steam
-            keepassxc
-            tealdeer
-            gh
-            pkgs-unstable.itch
-            unityhub
-            neovim-remote
             android-studio
-            android-tools
-            pavucontrol
             forge-mtg
             arduino-ide
             pandoc

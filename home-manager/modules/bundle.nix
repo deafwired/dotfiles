@@ -13,5 +13,8 @@
             ./lazygit.nix
             ./kitty.nix
             ./stylix.nix
-        ] ++ lib.optionals (device == "artemis") [ ./hyprland-artemis.nix ] ++ lib.optionals (device != "artemis") [ ./hyprland-default.nix ];
+        ]
+        ++ lib.optionals (device == "artemis") [ ./hyprland-artemis.nix ]
+        ++ lib.optionals (device == "laptop") [ ./hyprland-laptop.nix ]
+        ++ lib.optionals (device != "artemis" && device != "laptop") [ ./hyprland-default.nix ];
 }

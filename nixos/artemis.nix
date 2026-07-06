@@ -164,20 +164,6 @@
         description = "matt";
         extraGroups = [ "networkmanager" "wheel" ];
         packages = with pkgs; [
-            discord
-            wofi
-            waybar
-            wttrbar
-            chromium
-            steam
-            keepassxc
-            tealdeer
-            gh
-            pkgs-unstable.itch
-            unityhub
-            neovim-remote
-            android-tools
-            pavucontrol
             piper
             spotify
             onlyoffice-desktopeditors

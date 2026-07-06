@@ -2,6 +2,8 @@
 {
   programs.firefox = {
     enable = true;
+    # Pin to the legacy path; home.stateVersion predates the new XDG default
+    configPath = ".mozilla/firefox";
     profiles.default = {
       id = 0;
 

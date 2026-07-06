@@ -8,5 +8,6 @@
             ./ai.nix
             ./cyber.nix
             ./stylix.nix
+            ./common.nix
         ];
 }

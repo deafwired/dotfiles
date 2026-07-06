@@ -7,5 +7,6 @@
             ./terminal.nix
             ./mysql.nix
             ./stylix.nix
+            ./common.nix
         ];
 }

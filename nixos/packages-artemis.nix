@@ -3,23 +3,7 @@
         allowUnfree = true;
     };
     environment.systemPackages = with pkgs; [
-        wget
-        fastfetch
         btop-cuda
-        vlc
-        obsidian
-        vscode
-        usbimager
-        steam-run
-        nss
-        zed-editor
-        filezilla
-        kmonad
-        home-manager
-        qbittorrent
-        libreoffice-qt6
-        obs-studio
-        calibre
         openssl
         pkgs-unstable.forge-mtg
         blanket
@@ -27,14 +11,4 @@
         jellyfin-tui
         parsec-bin
     ];
-
-    fonts = {
-        enableDefaultPackages = true;
-        packages = with pkgs; [
-            fira-code
-            fira-code-symbols
-            pixel-code
-            nerd-fonts.symbols-only
-        ];
-    };
 }
