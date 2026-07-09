@@ -59,7 +59,7 @@
     # drexel printer
 
     hardware.printers.ensurePrinters = [{
-        name = "cci-printer";
+        name = "cci-printer1";
         deviceUri = "ipp://10.248.127.206/ipp/print";
         model = "everywhere";
         ppdOptions.PageSize = "Letter";

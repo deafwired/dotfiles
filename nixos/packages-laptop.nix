@@ -8,5 +8,6 @@
         jetbrains.idea
         btop
         zoom-us
+        git-lfs
     ];
 }

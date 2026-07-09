@@ -1,6 +1,7 @@
 { pkgs, pkgs-unstable, ... }: {
     environment.systemPackages = with pkgs; [
-        discord
+        vesktop
+        # discord
         wget
         fastfetch
         vlc
