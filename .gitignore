@@ -17,6 +17,8 @@
 !nixos/modules/*
 !nixos/overlays/
 !nixos/overlays/*
+!nixos/packages/
+!nixos/packages/*
 !home-manager/
 !home-manager/*
 !home-manager/**/

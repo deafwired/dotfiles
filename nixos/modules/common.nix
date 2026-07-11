@@ -41,6 +41,7 @@
         gh
         pkgs-unstable.itch
         unityhub
+        (callPackage ../packages/nvimunity.nix { })
         neovim-remote
         android-tools
         pavucontrol
