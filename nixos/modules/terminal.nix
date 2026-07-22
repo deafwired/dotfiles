@@ -20,5 +20,6 @@
         glibcInfo
         man-pages
         starship
+        valgrind
     ];
 }

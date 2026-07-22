@@ -30,6 +30,11 @@
         ];
     };
 
+    programs.kdeconnect = {
+        enable = true;
+        package = pkgs.valent;
+    };
+
     users.users.matt.packages = with pkgs; [
         wofi
         waybar

@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 {
   programs.firefox = {
     enable = true;
@@ -31,6 +31,8 @@
       settings = {
         # Required for userContent.css / userChrome.css to load
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+
+        "font.size.monospace.x-western" = lib.mkForce 13;
 
         # Privacy & tracking protection (strict mode)
         "browser.contentblocking.category" = "strict";
