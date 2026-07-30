@@ -181,6 +181,23 @@
     };
     users.users.immich.extraGroups = [ "video" "render" ];
 
+    # Calibre-Web
+    systemd.tmpfiles.rules = [
+        "d /data/calibre 0755 matt users -"
+    ];
+
+    services.calibre-web = {
+        enable = true;
+        user = "matt";
+        group = "users";
+        listen.ip = "0.0.0.0";
+        openFirewall = true;
+        options = {
+            enableBookUploading = true;
+            enableBookConversion = true;
+        };
+    };
+
     # configuring open ssh to a different port  
     services.openssh = {
         enable = true;
@@ -236,6 +253,9 @@
                     };
                     "torrent.deafwired.dev" = {
                         service = "http://localhost:8080";
+                    };
+                    "books.deafwired.dev" = {
+                        service = "http://localhost:8083";
                     };
                     "octoprint.deafwired.dev" = {
                         service = "http://localhost:5000";

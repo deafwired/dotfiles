@@ -8,5 +8,6 @@
             # ./ai.nix
             ./mysql.nix
             ./torrent.nix
+            ./copyparty.nix
         ];
 }
