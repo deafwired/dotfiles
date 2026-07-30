@@ -184,6 +184,7 @@
     # Calibre-Web
     systemd.tmpfiles.rules = [
         "d /data/calibre 0755 matt users -"
+        "Z /data/calibre 0755 matt users -"
     ];
 
     services.calibre-web = {
