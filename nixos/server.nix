@@ -128,6 +128,10 @@
                     path = "/home/matt/Documents/Passwords";
                     devices = ["MattsPhone" "artemis" "laptop"];
                 };
+                "Books" = {
+                    path = "/data/calibre";
+                    devices = ["artemis"];
+                };
             };
         };
     };
@@ -198,6 +202,8 @@
             enableBookConversion = true;
         };
     };
+
+    systemd.services.calibre-web.serviceConfig.ReadWritePaths = [ "/data/calibre" ];
 
     # configuring open ssh to a different port  
     services.openssh = {

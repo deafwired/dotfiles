@@ -201,10 +201,11 @@
             devices = {
                 "MattsPhone" = { id = "HJTHW5F-MXLEMOB-SBHOO2E-4PFDNU7-RM7DPXN-67MABS7-KB3CKWN-G25QEQI";};
                 "laptop" = { id = "BKZMWUW-BUXL7Z5-MTJ4QDJ-DAZ43JX-QBKBJGQ-O6IQMR2-2TEDSW7-QTDZTA5";};
+                "server" = { id = "T3F7QXJ-CETLFWQ-TAJATCU-TLHM2WC-VZVUXIP-MCZZNRT-4ASUBME-K73BPQT";};
             };
             folders = {
                 "keepass" = {
-                    path = "/home/matt/Documents/Passwords"; 
+                    path = "/home/matt/Documents/Passwords";
                     devices = ["MattsPhone" "laptop"];
                 };
                 "Notes" = {
@@ -213,7 +214,7 @@
                 };
                 "Books" = {
                         path = "/home/matt/Books";
-                        devices = ["MattsPhone" "laptop"];
+                        devices = ["MattsPhone" "laptop" "server"];
                 };
             };
             gui = {
