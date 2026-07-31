@@ -7,5 +7,6 @@
         steam
         vscode
         keepassxc
+        calibre
     ];
 }

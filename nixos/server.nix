@@ -33,7 +33,7 @@
 	networking.hostName = "server";
     networking.firewall = {
         enable = true;
-        allowedTCPPorts = [ 8787 5030 50300 2283 25565 3000 8080 ];
+        allowedTCPPorts = [ 8787 5030 50300 2283 25565 3000 8080 8083 ];
         allowedUDPPorts = [ 26000 25565 ];
     };
     networking = {
@@ -185,27 +185,37 @@
     };
     users.users.immich.extraGroups = [ "video" "render" ];
 
-    # Calibre-Web
+    # Calibre-Web Automated
     systemd.tmpfiles.rules = [
         "d /data/calibre 0755 matt users -"
         "Z /data/calibre 0755 matt users -"
+        "d /data/calibre-web-automated/config 0755 matt users -"
+        "d /data/cwa-ingest 0755 matt users -"
     ];
 
-    services.calibre-web = {
-        enable = true;
-        user = "matt";
-        group = "users";
-        listen.ip = "0.0.0.0";
-        openFirewall = true;
-        options = {
-            enableBookUploading = true;
-            enableBookConversion = true;
+    virtualisation.podman.enable = true;
+    virtualisation.oci-containers.backend = "podman";
+
+    virtualisation.oci-containers.containers.calibre-web-automated = {
+        image = "crocodilestick/calibre-web-automated:latest";
+        autoStart = true;
+        ports = [ "8083:8083" ];
+        volumes = [
+            "/data/calibre-web-automated/config:/config"
+            "/data/cwa-ingest:/cwa-book-ingest"
+            "/data/calibre:/calibre-library"
+        ];
+        environment = {
+            PUID = "1000";
+            PGID = "100";
+            TZ = "America/New_York";
+            NETWORK_SHARE_MODE = "false";
         };
+        environmentFiles = [
+            "/home/matt/.config/calibre-web-automated"
+        ];
     };
 
-    systemd.services.calibre-web.serviceConfig.ReadWritePaths = [ "/data/calibre" ];
-
-    # configuring open ssh to a different port  
     services.openssh = {
         enable = true;
         settings.PasswordAuthentication = false;
