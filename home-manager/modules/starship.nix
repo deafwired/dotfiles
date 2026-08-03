@@ -3,7 +3,7 @@
     enable = true;
     settings = {
       add_newline = true;
-      format = "[╭╴](238)$env_var$all[╰─](238)$character";
+      format = "[╭╴](238)$env_var$jobs$all[╰─](238)$character";
       character = {
         success_symbol = "[>](238)";
         error_symbol = "[>](#ff0000)";

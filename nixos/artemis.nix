@@ -166,7 +166,6 @@
         packages = with pkgs; [
             piper
             spotify
-            onlyoffice-desktopeditors
             zoom-us
         ];
     };

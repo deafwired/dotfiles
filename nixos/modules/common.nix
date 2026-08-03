@@ -18,6 +18,8 @@
         libreoffice-qt6
         obs-studio
         calibre
+        foliate
+        onlyoffice-desktopeditors
     ];
 
     fonts = {

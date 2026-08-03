@@ -7,7 +7,6 @@
         openssl
         pkgs-unstable.forge-mtg
         blanket
-        foliate
         jellyfin-tui
         parsec-bin
     ];
