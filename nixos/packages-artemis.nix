@@ -5,7 +5,6 @@
     environment.systemPackages = with pkgs; [
         btop-cuda
         openssl
-        pkgs-unstable.forge-mtg
         blanket
         jellyfin-tui
         parsec-bin

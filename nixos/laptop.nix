@@ -112,7 +112,6 @@
         extraGroups = [ "networkmanager" "wheel" ];
         packages = with pkgs; [
             android-studio
-            forge-mtg
             arduino-ide
             pandoc
         ];
