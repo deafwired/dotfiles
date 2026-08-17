@@ -135,16 +135,11 @@
     # XDG Desktop Portal for screen sharing on Wayland
     xdg.portal = {
         enable = true;
-        extraPortals = with pkgs; [
-            xdg-desktop-portal-gtk
-            xdg-desktop-portal-gnome
-            xdg-desktop-portal-wlr
-        ];
-        configPackages = with pkgs; [
-            xdg-desktop-portal-gnome
-        ];
-        config.common.default = [ "gnome" ];
-        config.common.screencast-portal = [ "wlr" ];
+        config = {
+            common.default = [ "gtk" ];
+            hyprland.default = [ "hyprland" "gtk" ];
+            gnome.default = [ "gnome" "gtk" ];
+        };
     };
 
     # Fingerprint shenanigans

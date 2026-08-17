@@ -191,6 +191,7 @@
         "Z /data/calibre 0755 matt users -"
         "d /data/calibre-web-automated/config 0755 matt users -"
         "d /data/cwa-ingest 0755 matt users -"
+        "d /data/minecraft/stoneblock4 0755 matt users -"
     ];
 
     virtualisation.podman.enable = true;
@@ -213,6 +214,26 @@
         };
         environmentFiles = [
             "/home/matt/.config/calibre-web-automated"
+        ];
+    };
+
+    # Minecraft: StoneBlock 4 (FTB, NeoForge, MC 1.21.1)
+    virtualisation.oci-containers.containers.minecraft-stoneblock4 = {
+        image = "itzg/minecraft-server:java21";
+        autoStart = true;
+        ports = [ "25565:25565" ];
+        volumes = [
+            "/data/minecraft/stoneblock4:/data"
+        ];
+        environment = {
+            EULA = "TRUE";
+            TYPE = "AUTO_CURSEFORGE";
+            CF_SLUG = "ftb-stoneblock-4";
+            MEMORY = "10G";
+            TZ = "America/New_York";
+        };
+        environmentFiles = [
+            "/home/matt/.config/minecraft-stoneblock4"
         ];
     };
 
