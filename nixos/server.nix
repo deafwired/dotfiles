@@ -178,7 +178,7 @@
     # Immich
     services.immich = {
         enable = true;
-        package = pkgs.immich;
+        package = pkgs-unstable.immich;
         host = "0.0.0.0";
         openFirewall = true;
         mediaLocation = "/data/immich";
