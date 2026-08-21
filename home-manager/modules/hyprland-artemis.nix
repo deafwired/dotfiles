@@ -8,6 +8,21 @@ in
         dp5Monitor
     ];
 
+    # Odd workspaces on the primary horizontal monitor (DP-6), even on the
+    # vertical one (DP-5).
+    wayland.windowManager.hyprland.settings.workspace = [
+        "1, monitor:DP-6"
+        "2, monitor:DP-5"
+        "3, monitor:DP-6"
+        "4, monitor:DP-5"
+        "5, monitor:DP-6"
+        "6, monitor:DP-5"
+        "7, monitor:DP-6"
+        "8, monitor:DP-5"
+        "9, monitor:DP-6"
+        "10, monitor:DP-5"
+    ];
+
     # Deadlock (and possibly other XWayland/Proton games) size their render
     # surface off the XWayland virtual root at creation time, which is the
     # bounding box of *all* outputs. With DP-5 rotated vertical next to DP-6,

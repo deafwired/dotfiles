@@ -1,6 +1,7 @@
 {
     imports =
         [
+            ./ai.nix
             ./hyprland.nix
             ./niri.nix
             ./languages.nix
