@@ -241,6 +241,7 @@
 
                 # Screenshots
                 "$mainMod SHIFT, S, exec, grimblast copy area"
+                "$mainMod ALT SHIFT, S, exec, grimblast save area"
                 ", PRTSCR, exec, grimblast copy"
 
                 # Scroll through existing workspaces with mainMod + scroll

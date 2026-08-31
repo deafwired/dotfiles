@@ -64,6 +64,7 @@ window#waybar {
 #battery,
 #tray,
 #custom-wttrbar,
+#custom-dnd,
 #memory {
     border-radius: 0;
     background-color: @base00;
@@ -86,4 +87,9 @@ window#waybar {
 #tray {
     padding-left: 10px;
     padding-right: 10px;
+}
+
+#custom-dnd.paused {
+    background: @base08;
+    color: @base00;
 }

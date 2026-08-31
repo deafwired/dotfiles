@@ -1,4 +1,22 @@
-{ config, pkgs, ...}:{
+{ config, pkgs, lib, device, ...}:
+let
+    isArtemis = device == "artemis";
+
+    dndModule = {
+        return-type = "json";
+        interval = "once";
+        signal = 8;
+        exec = ''
+            if [ "$(dunstctl is-paused)" = "true" ]; then
+                printf '{"text": "󰂛", "tooltip": "Notifications paused", "class": "paused"}'
+            else
+                printf '{"text": "󰂚", "tooltip": "Notifications enabled", "class": "active"}'
+            fi
+        '';
+        on-click = "dunstctl set-paused toggle; pkill -RTMIN+8 waybar";
+    };
+in
+{
     programs.waybar = {
         enable = true;
         settings = {
@@ -7,7 +25,7 @@
 
                 position = "top";
 
-                modules-left = [ "hyprland/workspaces" "tray" ];
+                modules-left = [ "hyprland/workspaces" "tray" "custom/dnd" ];
 
                 modules-center = [ "hyprland/window" ];
 
@@ -83,13 +101,79 @@
                 "tray" = {
                     spacing = 10;
                 };
-                
+
+                "custom/dnd" = dndModule;
+
                 "custom/wttrbar" = {
                     format = "{}°F";
                     tooltip = true;
                     interval = 3600;
                     exec = "wttrbar --fahrenheit --ampm --date-format %m/%d/%Y";
                     return-type = "json";
+                };
+            } // lib.optionalAttrs isArtemis {
+                # Pin the full bar to the primary horizontal monitor; DP-5 is
+                # too narrow and gets verticalBar instead.
+                output = [ "DP-6" ];
+            };
+        } // lib.optionalAttrs isArtemis {
+            # Compact bar for artemis's vertical monitor (DP-5), which is too
+            # narrow to fit mainBar's modules.
+            verticalBar = {
+                layer = "top";
+                position = "top";
+                name = "vertical";
+
+                output = [ "DP-5" ];
+
+                modules-left = [ "hyprland/workspaces" "tray" "custom/dnd" ];
+                modules-center = [ ];
+                modules-right = [ "network" "pulseaudio" "battery" "clock" ];
+
+                "hyprland/workspaces" = {
+                    format = "{name}";
+                    tooltip = false;
+                    all-outputs = false;
+                };
+
+                "tray" = {
+                    spacing = 8;
+                };
+
+                "custom/dnd" = dndModule;
+
+                "network" = {
+                    format-wifi = "{signalStrength} ";
+                    format-ethernet = "󰈀";
+                    format-disconnected = "󰤭";
+                    tooltip-format = "{ifname} via {gwaddr} 󰊙";
+                };
+
+                "pulseaudio" = {
+                    format = "{volume}% {icon}";
+                    format-muted = "󰝟";
+                    format-icons = {
+                        headphone = "";
+                        headset = "";
+                        default = ["" "" ""];
+                    };
+                    on-click = "pavucontrol";
+                };
+
+                "battery" = {
+                    states = {
+                        warning = 30;
+                        critical = 15;
+                    };
+                    format = "{capacity}% {icon}";
+                    format-charging = " {capacity}%";
+                    format-icons = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" ];
+                };
+
+                "clock" = {
+                    format = "{:%I:%M %p}";
+                    format-alt = "{:%m/%d}";
+                    tooltip = false;
                 };
             };
         };

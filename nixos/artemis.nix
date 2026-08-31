@@ -171,6 +171,11 @@
     programs.nix-ld.enable = true;
     nixpkgs.config.allowUnfree = true;
 
+    programs.appimage = {
+        enable = true;
+        binfmt = true;
+    };
+
     # trying to get drexel wifi to work
     nixpkgs.config.packageOverrides = pkgs: rec {
         wpa_supplicant = pkgs.wpa_supplicant.overrideAttrs (attrs: {patches = attrs.patches ++ [./dragonfly3.patch];});
