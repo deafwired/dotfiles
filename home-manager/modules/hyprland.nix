@@ -2,6 +2,90 @@
 {
     home.file.".config/hypr/rofi.sh".source = ./rofi.sh;
 
+    programs.hyprlock = {
+        enable = true;
+        settings = {
+            general = {
+                disable_loading_bar = true;
+                grace = 5;
+                hide_cursor = true;
+            };
+
+            background = [
+                {
+                    path = "screenshot";
+                    blur_passes = 3;
+                    blur_size = 8;
+                }
+            ];
+
+            input-field = [
+                {
+                    monitor = "";
+                    size = "250, 50";
+                    position = "0, -80";
+                    dots_center = true;
+                    fade_on_empty = false;
+                    outline_thickness = 3;
+                    outer_color = "rgb(${config.lib.stylix.colors.base0B})";
+                    inner_color = "rgb(${config.lib.stylix.colors.base00})";
+                    font_color = "rgb(${config.lib.stylix.colors.base05})";
+                    check_color = "rgb(${config.lib.stylix.colors.base0D})";
+                    fail_color = "rgb(${config.lib.stylix.colors.base08})";
+                    placeholder_text = ''<span foreground="##${config.lib.stylix.colors.base04}">Password...</span>'';
+                }
+            ];
+
+            label = [
+                {
+                    monitor = "";
+                    text = "$TIME";
+                    color = "rgb(${config.lib.stylix.colors.base05})";
+                    font_size = 90;
+                    position = "0, 80";
+                    halign = "center";
+                    valign = "center";
+                }
+                {
+                    monitor = "";
+                    text = "$USER";
+                    color = "rgb(${config.lib.stylix.colors.base04})";
+                    font_size = 16;
+                    position = "0, -160";
+                    halign = "center";
+                    valign = "center";
+                }
+            ];
+        };
+    };
+
+    services.hypridle = {
+        enable = true;
+        settings = {
+            general = {
+                lock_cmd = "pidof hyprlock || hyprlock";
+                before_sleep_cmd = "loginctl lock-session";
+                after_sleep_cmd = "hyprctl dispatch dpms on";
+            };
+
+            listener = [
+                {
+                    timeout = 300;
+                    on-timeout = "loginctl lock-session";
+                }
+                {
+                    timeout = 330;
+                    on-timeout = "hyprctl dispatch dpms off";
+                    on-resume = "hyprctl dispatch dpms on";
+                }
+                {
+                    timeout = 900;
+                    on-timeout = "systemctl suspend";
+                }
+            ];
+        };
+    };
+
     wayland.windowManager.hyprland = {
         enable = true;
         configType = "hyprlang";

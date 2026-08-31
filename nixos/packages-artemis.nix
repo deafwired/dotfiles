@@ -8,6 +8,5 @@
         blanket
         jellyfin-tui
         parsec-bin
-        prismlauncher
     ];
 }

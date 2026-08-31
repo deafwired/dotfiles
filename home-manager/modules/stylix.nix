@@ -7,6 +7,7 @@
         wofi.enable = false;
 
         hyprland.enable = false;
+        hyprlock.enable = false;
 
         firefox.profileNames = [ "default" ];
     };

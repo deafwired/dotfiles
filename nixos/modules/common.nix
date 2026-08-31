@@ -21,6 +21,7 @@
         foliate
         onlyoffice-desktopeditors
         pkgs-unstable.forge-mtg
+        prismlauncher
     ];
 
     fonts = {
