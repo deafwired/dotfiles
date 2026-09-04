@@ -1,4 +1,8 @@
 { pkgs, pkgs-unstable, ... }: {
+    imports = [
+        ./hotspot-proxy.nix
+    ];
+
     environment.systemPackages = with pkgs; [
         vesktop
         # discord

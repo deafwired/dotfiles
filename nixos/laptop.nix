@@ -32,6 +32,7 @@
         LC_TIME = "en_US.UTF-8";
     };
 
+    environment.gnome.excludePackages = [ pkgs.papers ];
     services = {
         desktopManager = {
             gnome.enable = true;

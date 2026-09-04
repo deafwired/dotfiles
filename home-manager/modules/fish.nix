@@ -10,10 +10,28 @@
             zoxide init fish | source
             enable_transience
             set fish_user_paths $HOME/.local/bin $fish_user_paths
+
+            # proxy
+            if test -e /run/hotspot-proxy.env
+                for line in (cat /run/hotspot-proxy.env)
+                    set -l parts (string split -m1 '=' -- $line)
+                    if test (count $parts) -eq 2
+                        set -gx $parts[1] $parts[2]
+                    end
+                end
+            else
+                set -e http_proxy
+                set -e https_proxy
+                set -e HTTP_PROXY
+                set -e HTTPS_PROXY
+                set -e no_proxy
+                set -e NO_PROXY
+            end
         '';
 
         shellAliases = {
-            rebuild = "sudo nix flake update --flake ~/dotfiles && sudo nixos-rebuild switch --flake ~/dotfiles";
+            rebuild = "sudo nixos-rebuild switch --flake ~/dotfiles";
+            update = "sudo nix flake update --flake ~/dotfiles";
             cd = "z";
             dim = "brightnessctl set 1";
             nf = "fastfetch";
