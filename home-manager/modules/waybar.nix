@@ -15,8 +15,27 @@ let
         '';
         on-click = "dunstctl set-paused toggle; pkill -RTMIN+8 waybar";
     };
+
+    networkModule = {
+        return-type = "json";
+        interval = 5;
+        signal = 9;
+        exec = "~/.config/waybar/network-status.sh";
+        on-click = "~/.config/waybar/network-menu.sh";
+    };
 in
 {
+    home.file = {
+        ".config/waybar/network-status.sh" = {
+            source = ./network-status.sh;
+            executable = true;
+        };
+        ".config/waybar/network-menu.sh" = {
+            source = ./network-menu.sh;
+            executable = true;
+        };
+    };
+
     programs.waybar = {
         enable = true;
         settings = {
@@ -29,7 +48,7 @@ in
 
                 modules-center = [ "hyprland/window" ];
 
-                modules-right = [ "network" "pulseaudio" "backlight" "custom/wttrbar" "battery" "clock" ];
+                modules-right = [ "custom/network" "pulseaudio" "backlight" "custom/wttrbar" "battery" "clock" ];
                 
                 "battery" = {
                     states = {
@@ -42,14 +61,7 @@ in
                     format-icons = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" ];
                 };
 
-                "network" = {
-                    format-wifi = "{essid} ({signalStrength}%) ";
-                    format-ethernet = "{ipaddr}/{cidr} 󰈀";
-                    tooltip-format = "{ifname} via {gwaddr} 󰊙";
-                    format-linked = "{ifname} (No IP) 󰊙";
-                    format-disconnected = "Disconnected ⚠";
-                    format-alt = "{ifname}:{ipaddr}/{cidr}";
-                };
+                "custom/network" = networkModule;
 
                 "pulseaudio" = {
                     format = "{volume}% {icon} {format_source}";
@@ -128,7 +140,7 @@ in
 
                 modules-left = [ "hyprland/workspaces" "tray" "custom/dnd" ];
                 modules-center = [ ];
-                modules-right = [ "network" "pulseaudio" "battery" "clock" ];
+                modules-right = [ "custom/network" "pulseaudio" "battery" "clock" ];
 
                 "hyprland/workspaces" = {
                     format = "{name}";
@@ -142,12 +154,7 @@ in
 
                 "custom/dnd" = dndModule;
 
-                "network" = {
-                    format-wifi = "{signalStrength} ";
-                    format-ethernet = "󰈀";
-                    format-disconnected = "󰤭";
-                    tooltip-format = "{ifname} via {gwaddr} 󰊙";
-                };
+                "custom/network" = networkModule;
 
                 "pulseaudio" = {
                     format = "{volume}% {icon}";

@@ -60,11 +60,11 @@ window#waybar {
 #temperature,
 #cpu,
 #pulseaudio,
-#network,
 #battery,
 #tray,
 #custom-wttrbar,
 #custom-dnd,
+#custom-network,
 #memory {
     border-radius: 0;
     background-color: @base00;
@@ -90,6 +90,12 @@ window#waybar {
 }
 
 #custom-dnd.paused {
+    background: @base08;
+    color: @base00;
+}
+
+#custom-network.disconnected,
+#custom-network.disabled {
     background: @base08;
     color: @base00;
 }
