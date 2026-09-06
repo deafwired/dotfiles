@@ -139,7 +139,7 @@ in
                 output = [ "DP-5" ];
 
                 modules-left = [ "hyprland/workspaces" "tray" "custom/dnd" ];
-                modules-center = [ ];
+                modules-center = [ "hyprland/window" ];
                 modules-right = [ "custom/network" "pulseaudio" "battery" "clock" ];
 
                 "hyprland/workspaces" = {
