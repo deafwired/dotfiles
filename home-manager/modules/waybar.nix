@@ -34,6 +34,10 @@ in
             source = ./network-menu.sh;
             executable = true;
         };
+        ".config/waybar/audio-menu.sh" = {
+            source = ./audio-menu.sh;
+            executable = true;
+        };
     };
 
     programs.waybar = {
@@ -79,7 +83,10 @@ in
                         car = "";
                         default = ["" "" ""];
                     };
-                    on-click = "pavucontrol";
+                    on-click = "~/.config/waybar/audio-menu.sh";
+                    on-click-right = "pavucontrol";
+                    on-scroll-up = "swayosd-client --output-volume raise";
+                    on-scroll-down = "swayosd-client --output-volume lower";
                 };
                 "clock" = {
                     format = " {:%I:%M %p}";
@@ -122,6 +129,7 @@ in
                     interval = 3600;
                     exec = "wttrbar --fahrenheit --ampm --date-format %m/%d/%Y";
                     return-type = "json";
+                    cursor = false;
                 };
             } // lib.optionalAttrs isArtemis {
                 # Pin the full bar to the primary horizontal monitor; DP-5 is
@@ -164,7 +172,10 @@ in
                         headset = "";
                         default = ["" "" ""];
                     };
-                    on-click = "pavucontrol";
+                    on-click = "~/.config/waybar/audio-menu.sh";
+                    on-click-right = "pavucontrol";
+                    on-scroll-up = "swayosd-client --output-volume raise";
+                    on-scroll-down = "swayosd-client --output-volume lower";
                 };
 
                 "battery" = {

@@ -8,5 +8,6 @@
         blanket
         jellyfin-tui
         parsec-bin
+        cockatrice
     ];
 }

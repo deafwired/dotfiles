@@ -99,3 +99,18 @@ window#waybar {
     background: @base08;
     color: @base00;
 }
+
+#custom-wttrbar:hover {
+    background-color: @base0B;
+    color: @base00;
+}
+
+tooltip {
+    background-color: @base00;
+    border: 2px solid @base0B;
+    border-radius: 0;
+}
+
+tooltip label {
+    color: @base05;
+}

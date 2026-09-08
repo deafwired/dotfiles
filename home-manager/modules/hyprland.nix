@@ -1,6 +1,71 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
     home.file.".config/hypr/rofi.sh".source = ./rofi.sh;
+
+    services.swayosd = {
+        enable = true;
+        stylePath = pkgs.writeText "swayosd-style.css" ''
+            @define-color base00 ${config.lib.stylix.colors.withHashtag.base00};
+            @define-color base05 ${config.lib.stylix.colors.withHashtag.base05};
+            @define-color base0B ${config.lib.stylix.colors.withHashtag.base0B};
+
+            * {
+                font-family: "${config.stylix.fonts.monospace.name}";
+            }
+
+            window#osd {
+                border-radius: 0;
+                border: 5px solid @base0B;
+                background: @base00;
+            }
+
+            window#osd #container {
+                margin: 16px;
+            }
+
+            window#osd image,
+            window#osd label {
+                color: @base05;
+            }
+
+            window#osd progressbar:disabled,
+            window#osd image:disabled {
+                opacity: 0.5;
+            }
+
+            window#osd progressbar,
+            window#osd segmentedprogress {
+                min-height: 6px;
+                border-radius: 0;
+                background: transparent;
+                border: none;
+            }
+
+            window#osd trough,
+            window#osd segment {
+                min-height: inherit;
+                border-radius: inherit;
+                border: none;
+                background: alpha(@base05, 0.3);
+            }
+
+            window#osd progress,
+            window#osd segment.active {
+                min-height: inherit;
+                border-radius: inherit;
+                border: none;
+                background: @base0B;
+            }
+
+            window#osd segment {
+                margin-left: 8px;
+            }
+
+            window#osd segment:first-child {
+                margin-left: 0;
+            }
+        '';
+    };
 
     programs.hyprlock = {
         enable = true;
@@ -254,13 +319,13 @@
                 "$mainMod, W, exec, pkill -SIGUSR2 waybar"
 
                 # Brightness Controls
-                ", XF86MonBrightnessUp, exec, brightnessctl set +10% "
-                ", XF86MonBrightnessDown, exec, brightnessctl set 10%-" 
+                ", XF86MonBrightnessUp, exec, swayosd-client --brightness raise"
+                ", XF86MonBrightnessDown, exec, swayosd-client --brightness lower"
 
                 # Audio Controls
-                ", XF86AudioRaiseVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ +5%"
-                ", XF86AudioLowerVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ -5%"
-                ", XF86AudioMute, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle"
+                ", XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise"
+                ", XF86AudioLowerVolume, exec, swayosd-client --output-volume lower"
+                ", XF86AudioMute, exec, swayosd-client --output-volume mute-toggle"
 
                 # Media Controls
                 ", XF86AudioPlay, exec, playerctl play-pause"

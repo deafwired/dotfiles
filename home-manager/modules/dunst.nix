@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 {
     services.dunst = {
         enable = true;
@@ -15,6 +15,12 @@
                 offset = "20x20";
                 padding = 10;
                 corner_radius = 0;
+
+                mouse_left_click = "do_action, close_current";
+                mouse_middle_click = "close_all";
+                mouse_right_click = "close_current";
+
+                dmenu = "${pkgs.wofi}/bin/wofi --dmenu";
             };
 
             urgency_low.timeout = 5;

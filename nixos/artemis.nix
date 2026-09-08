@@ -15,6 +15,10 @@
 
     networking.hostName = "artemis";
     networking.networkmanager.enable = true;
+    networking.firewall = {
+        enable = true;
+        allowedTCPPorts = [ 8787 ];
+    };
 
     fileSystems."/mnt/hdd1" = {
         device = "/dev/disk/by-uuid/7E20EF7A20EF3833";
@@ -223,7 +227,11 @@
         };
     };
 
-    services.openssh.enable = true;
+    services.openssh = {
+        enable = true;
+        settings.PasswordAuthentication = false;
+        ports = [ 8787 ];
+    };
 
     system.stateVersion = "24.11";
 }
