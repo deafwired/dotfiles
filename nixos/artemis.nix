@@ -17,7 +17,8 @@
     networking.networkmanager.enable = true;
     networking.firewall = {
         enable = true;
-        allowedTCPPorts = [ 8787 ];
+        allowedTCPPorts = [ 8787 2005 36743 ];
+        allowedUDPPorts = [ 36743 ];
     };
 
     fileSystems."/mnt/hdd1" = {
@@ -166,6 +167,7 @@
             piper
             spotify
             zoom-us
+            screen
         ];
     };
 

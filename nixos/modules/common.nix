@@ -3,6 +3,12 @@
         ./hotspot-proxy.nix
     ];
 
+    # forge-mtg-snapshot builds live from Forge's master branch and needs
+    # network access during the build (no fixed-output hash), so it opts
+    # out of the sandbox via __noChroot. That opt-out only works when the
+    # daemon allows it.
+    nix.settings.sandbox = "relaxed";
+
     environment.systemPackages = with pkgs; [
         vesktop
         # discord
@@ -24,7 +30,7 @@
         calibre
         foliate
         onlyoffice-desktopeditors
-        pkgs-unstable.forge-mtg
+        (pkgs-unstable.callPackage ../packages/forge-mtg-snapshot.nix { })
         prismlauncher
     ];
 

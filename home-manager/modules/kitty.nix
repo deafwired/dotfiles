@@ -7,6 +7,7 @@
             confirm_os_window_close = 0;
             disable_ligatures = "never";
             cursor_shape = "block";
+            clipboard_control = "write-clipboard write-primary read-clipboard read-primary no-append";
         };
         extraConfig = ''
             # Seti-UI + Custom

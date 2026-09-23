@@ -38,6 +38,9 @@ vim.opt.fillchars = { eob = " " }
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
+if vim.env.SSH_TTY then
+  vim.g.clipboard = "osc52"
+end
 vim.opt.clipboard = "unnamedplus"
 
 vim.opt.wrap = false

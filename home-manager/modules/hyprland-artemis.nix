@@ -31,6 +31,8 @@ in
     # then re-enabling it, makes the surface init at DP-6's real size.
     # Steam launch options: `deadlock-launch %command%`
     home.packages = [
+        pkgs.deadlock-mod-manager
+
         (pkgs.writeShellScriptBin "deadlock-launch" ''
             #!/usr/bin/env bash
             set -e
@@ -44,6 +46,18 @@ in
                 done
                 sleep 1
                 ${pkgs.hyprland}/bin/hyprctl keyword monitor "${dp5Monitor}"
+
+                # Floating windows that were reflowed onto DP-6 while DP-5 was
+                # disabled keep their old pixel coordinates once DP-5 comes
+                # back, which can leave them positioned off of every monitor.
+                # Re-center KeePassXC (workspace 10, DP-5) and hand focus back
+                # to the game.
+                sleep 0.5
+                if ${pkgs.hyprland}/bin/hyprctl clients | grep -q "class: org.keepassxc.KeePassXC"; then
+                    ${pkgs.hyprland}/bin/hyprctl dispatch focuswindow "class:^(org.keepassxc.KeePassXC)$"
+                    ${pkgs.hyprland}/bin/hyprctl dispatch centerwindow
+                    ${pkgs.hyprland}/bin/hyprctl dispatch focuswindow "class:^(steam_app_1422450)$"
+                fi
             ) &
 
             exec "$@"
