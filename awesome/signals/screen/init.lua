@@ -7,23 +7,7 @@ local vars = require 'config.vars'
 local widgets = require 'widgets'
 
 screen.connect_signal('request::wallpaper', function(s)
-   -- This thing below does not seem to work with my monitor, using the old way of making a wallpaper
-   -- awful.wallpaper {
-   --    screen = s,
-   --    widget = {
-   --       {
-   --          horizontal_fit_policy = "fit",
-   --          vertical_fit_policy   = "fit",
-   --          image                 = beautiful.wallpaper,
-   --          widget                = wibox.widget.imagebox,
-   --       },
-   --       -- valign = 'center',
-   --       -- halign = 'center',
-   --       tiled = false,
-   --       widget = wibox.container.tile,
-   --    }
-
-   -- }
+   -- awful.wallpaper{} doesn't work with my monitor, use the old API instead
    gears.wallpaper.maximized("/home/matt/.config/backupAwesome/background.png")
 end)
 

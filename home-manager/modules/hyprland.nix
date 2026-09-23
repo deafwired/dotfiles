@@ -177,6 +177,7 @@
             };
             
             exec-once = [
+                "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE && hash dbus-update-activation-environment 2>/dev/null && dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE"
                 "swaybg -i ${config.stylix.image}"
                 "waybar -b mainBar"
                 "[workspace special:magic silent] obsidian"

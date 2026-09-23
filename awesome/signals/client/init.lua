@@ -38,10 +38,6 @@ client.connect_signal('request::titlebars', function(c)
          -- title
          awful.titlebar.widget.iconwidget(c),
          awful.titlebar.widget.titlewidget(c),
-         -- {
-         --    align = 'center',
-         --    widget = awful.titlebar.widget.titlewidget(c),
-         -- },
          buttons = buttons,
          layout  = wibox.layout.fixed.horizontal,
       },

@@ -48,6 +48,8 @@
         "privacy.userContext.enabled" = true;
         "privacy.userContext.ui.enabled" = true;
 
+        "network.proxy.type" = 0;
+
         # Network hardening
         "network.dns.disablePrefetch" = true;
         "network.prefetch-next" = false;

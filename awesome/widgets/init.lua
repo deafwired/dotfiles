@@ -144,7 +144,6 @@ function _M.create_wibox(s)
    return awful.wibar {
       screen = s,
       position = 'top',
-      -- border_width = 5,
       widget = {
          layout = wibox.layout.align.horizontal,
          -- left widgets
@@ -158,7 +157,6 @@ function _M.create_wibox(s)
          -- right widgets
          {
             layout = wibox.layout.fixed.horizontal,
-            -- _M.keyboardlayout,
             wibox.widget.systray(),
             battery {
                ac_prefix = "󱐋",

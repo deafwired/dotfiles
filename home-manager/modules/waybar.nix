@@ -96,13 +96,8 @@ in
 
                 "hyprland/workspaces" = {
                     format = "{name}";
-                    # format = "{icon}";
                     tooltip = false;
                     all-outputs = true;
-                    # format-icons = {
-                    #      active = "";
-                    #      default = "";
-                    # };
                 };
 
                 "temperature" = {

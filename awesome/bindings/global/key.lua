@@ -188,7 +188,6 @@ awful.keyboard.append_global_keybindings({
 		on_press = function()
 			awful.spawn("pactl set-sink-volume 0 -6.25%")
 		end,
-		-- on_press    = change_volume(-6.25),
 	}),
 	awful.key({
 		modifiers = {},
@@ -198,7 +197,6 @@ awful.keyboard.append_global_keybindings({
 		on_press = function()
 			awful.spawn("pactl set-sink-volume 0 +6.25%")
 		end,
-		-- on_press    = change_volume(6.25),
 	}),
 	awful.key({
 		modifiers = {},
