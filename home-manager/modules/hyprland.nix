@@ -149,6 +149,7 @@
 
     wayland.windowManager.hyprland = {
         enable = true;
+        portalPackage = null;
         configType = "hyprlang";
         settings = {
             "$mainMod" = "SUPER";
