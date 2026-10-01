@@ -47,6 +47,9 @@
                     inherit inputs system;
                 };
                 modules = [
+                    ({ ... }: {
+                        nixpkgs.overlays = [ (import ./nixos/overlays/spotx.nix) ];
+                    })
                     inputs.nixos-hardware.nixosModules.framework-13th-gen-intel
                     inputs.stylix.nixosModules.stylix
                     ./nixos/laptop.nix

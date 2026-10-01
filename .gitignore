@@ -19,6 +19,8 @@
 !nixos/overlays/*
 !nixos/packages/
 !nixos/packages/*
+!nixos/ppd/
+!nixos/ppd/*
 !home-manager/
 !home-manager/*
 !home-manager/**/

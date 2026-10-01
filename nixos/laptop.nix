@@ -59,10 +59,25 @@
 
     # drexel printer
 
+    services.printing.drivers = [
+        (pkgs.linkFarm "drexel-printer-ppd" [{
+            name = "share/cups/model/drexel/cci-printer1.ppd";
+            path = ./ppd/cci-printer1.ppd;
+        }])
+        # generic PCL 6 / PCL XL driver for the sharp, which doesn't do postscript
+        pkgs.foomatic-db-ppds
+    ];
+
     hardware.printers.ensurePrinters = [{
         name = "cci-printer1";
         deviceUri = "ipp://10.248.127.206/ipp/print";
-        model = "everywhere";
+        model = "drexel/cci-printer1.ppd";
+        ppdOptions.PageSize = "Letter";
+    }
+    {
+        name = "sharp-mx-7081";
+        deviceUri = "socket://10.0.1.201:9100";
+        model = "foomatic-db-ppds/Generic-PCL_6_PCL_XL_Printer-pxlcolor.ppd.gz";
         ppdOptions.PageSize = "Letter";
     }];
 
@@ -115,6 +130,7 @@
             android-studio
             arduino-ide
             pandoc
+            spotify
         ];
     };
 
