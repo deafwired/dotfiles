@@ -104,7 +104,7 @@
             label = [
                 {
                     monitor = "";
-                    text = "$TIME";
+                    text = "$TIME12";
                     color = "rgb(${config.lib.stylix.colors.base05})";
                     font_size = 90;
                     position = "0, 80";
@@ -179,6 +179,7 @@
                 "waybar -b mainBar"
                 "[workspace special:magic silent] obsidian"
                 "[workspace 10 silent] keepassxc"
+                "valent --gapplication-service"
             ];
     
             decoration = {
