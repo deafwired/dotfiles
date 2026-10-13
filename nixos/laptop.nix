@@ -79,6 +79,13 @@
         deviceUri = "socket://10.0.1.201:9100";
         model = "foomatic-db-ppds/Generic-PCL_6_PCL_XL_Printer-pxlcolor.ppd.gz";
         ppdOptions.PageSize = "Letter";
+    }
+    {
+        # BeLit Oxford St, basement
+        name = "sharp-mx-4071";
+        deviceUri = "ipp://192.168.1.5/ipp/print";
+        model = "foomatic-db-ppds/Generic-PCL_6_PCL_XL_Printer-pxlcolor.ppd.gz";
+        ppdOptions.PageSize = "Letter";
     }];
 
     hardware.graphics.enable32Bit = true;
