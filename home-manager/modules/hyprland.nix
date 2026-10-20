@@ -2,6 +2,27 @@
 {
     home.file.".config/hypr/rofi.sh".source = ./rofi.sh;
 
+    # The exec-once below imports WAYLAND_DISPLAY/XDG_CURRENT_DESKTOP/
+    # HYPRLAND_INSTANCE_SIGNATURE into the systemd --user manager and dbus
+    # activation environment. That manager isn't restarted on logout, so
+    # those stale values leak into the next session (e.g. switching to
+    # GNOME from GDM without rebooting), making it crash-loop back to the
+    # login screen. hyprland-session.target is started/stopped by Hyprland
+    # itself, so unset them when it stops.
+    systemd.user.services.hyprland-env-cleanup = {
+        Unit = {
+            Description = "Unset session env vars exported by Hyprland";
+            PartOf = [ "hyprland-session.target" ];
+        };
+        Service = {
+            Type = "oneshot";
+            RemainAfterExit = true;
+            ExecStart = "${pkgs.coreutils}/bin/true";
+            ExecStop = "${pkgs.systemd}/bin/systemctl --user unset-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE";
+        };
+        Install.WantedBy = [ "hyprland-session.target" ];
+    };
+
     services.swayosd = {
         enable = true;
         stylePath = pkgs.writeText "swayosd-style.css" ''

@@ -127,19 +127,19 @@ in
                     cursor = false;
                 };
             } // lib.optionalAttrs isArtemis {
-                # Pin the full bar to the primary horizontal monitor; DP-5 is
+                # Pin the full bar to the primary horizontal monitor; DP-6 is
                 # too narrow and gets verticalBar instead.
-                output = [ "DP-6" ];
+                output = [ "DP-5" ];
             };
         } // lib.optionalAttrs isArtemis {
-            # Compact bar for artemis's vertical monitor (DP-5), which is too
+            # Compact bar for artemis's vertical monitor (DP-6), which is too
             # narrow to fit mainBar's modules.
             verticalBar = {
                 layer = "top";
                 position = "top";
                 name = "vertical";
 
-                output = [ "DP-5" ];
+                output = [ "DP-6" ];
 
                 modules-left = [ "hyprland/workspaces" "tray" "custom/dnd" ];
                 modules-center = [ "hyprland/window" ];
