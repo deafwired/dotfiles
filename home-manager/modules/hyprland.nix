@@ -328,6 +328,10 @@
                 "$mainMod SHIFT, S, exec, grimblast copy area"
                 "$mainMod ALT SHIFT, S, exec, grimblast save area"
                 ", PRTSCR, exec, grimblast copy"
+                # Annotate: select area -> draw -> Enter copies to clipboard
+                "$mainMod SHIFT, A, exec, grimblast save area - | satty --filename - --early-exit --copy-command wl-copy --actions-on-enter save-to-clipboard"
+                # Draw on the image currently in the clipboard
+                "$mainMod SHIFT, E, exec, wl-paste --type image/png | satty --filename - --early-exit --copy-command wl-copy --actions-on-enter save-to-clipboard"
 
                 # Scroll through existing workspaces with mainMod + scroll
                 "$mainMod, mouse_down, workspace, e+1"

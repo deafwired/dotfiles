@@ -83,6 +83,8 @@
 
             Mod+Shift+S { screenshot; }
             Print { screenshot-screen; }
+            Mod+Shift+A { spawn-sh "grimblast save area - | satty --filename - --early-exit --copy-command wl-copy --actions-on-enter save-to-clipboard"; }
+            Mod+Shift+E { spawn-sh "wl-paste --type image/png | satty --filename - --early-exit --copy-command wl-copy --actions-on-enter save-to-clipboard"; }
 
             Mod+M { spawn "pkill" "-SIGUSR1" "waybar"; }
             Mod+W { spawn "pkill" "-SIGUSR2" "waybar"; }

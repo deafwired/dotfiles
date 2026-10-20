@@ -15,6 +15,7 @@
         wofi
         hyprpicker
         grimblast
+        satty
         swaybg
     ];
 
