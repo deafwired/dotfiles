@@ -300,6 +300,43 @@
             "zha"
         ];
     };
+    # Wishlist (Express app in ~/Code/wishlist, served on :3456 via cloudflared)
+    systemd.services.wishlist = {
+        description = "Wishlist web app";
+        after = [ "network-online.target" ];
+        wants = [ "network-online.target" ];
+        wantedBy = [ "multi-user.target" ];
+        serviceConfig = {
+            User = "matt";
+            Group = "users";
+            WorkingDirectory = "/home/matt/Code/wishlist";
+            EnvironmentFile = "/home/matt/Code/wishlist/.env";
+            ExecStart = "${pkgs.nodejs_24}/bin/node app.js";
+            Restart = "on-failure";
+            RestartSec = 5;
+        };
+    };
+
+    # Street Brawl draft (Node app in ~/Code/sbdraft, served on :3457 via cloudflared)
+    systemd.services.sbdraft = {
+        description = "Street Brawl draft server";
+        after = [ "network-online.target" ];
+        wants = [ "network-online.target" ];
+        wantedBy = [ "multi-user.target" ];
+        environment = {
+            PORT = "3457";
+            HOST = "127.0.0.1";
+        };
+        serviceConfig = {
+            User = "matt";
+            Group = "users";
+            WorkingDirectory = "/home/matt/Code/sbdraft";
+            ExecStart = "${pkgs.nodejs_24}/bin/node server.js";
+            Restart = "on-failure";
+            RestartSec = 5;
+        };
+    };
+
     # cloudflared
     services. cloudflared = {
         enable = true;
@@ -336,6 +373,9 @@
                     };
                     "wishlist.deafwired.dev" = {
                             service = "http://localhost:3456";
+                    };
+                    "draft.deafwired.dev" = {
+                        service = "http://localhost:3457";
                     };
                 };
                 default = "http_status:404";
