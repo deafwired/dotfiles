@@ -4,6 +4,7 @@
         [
             ./fish.nix
             ./firefox.nix
+            ./thunderbird.nix
             ./hyprland.nix
             ./niri.nix
             ./waybar.nix
