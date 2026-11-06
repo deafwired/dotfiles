@@ -1,8 +1,19 @@
 { pkgs, ... }:
 {
     programs.hyprland.enable = true;
+    # uwsm properly starts/stops graphical-session.target (and unsets the
+    # env vars it imported) when Hyprland exits. Without it, nothing ever
+    # stops the target on logout, so stale WAYLAND_DISPLAY/XDG_CURRENT_DESKTOP/
+    # HYPRLAND_INSTANCE_SIGNATURE values stick around in the systemd --user
+    # environment and break the next GNOME login (it bounces back to gdm).
+    programs.hyprland.withUWSM = true;
     programs.hyprlock.enable = true;
     services.hypridle.enable = true;
+
+    i18n.inputMethod = {
+        enable = true;
+        type = "ibus";
+    };
 
     # Makes KDE Connect remote input (mouse/keyboard from phone) work under
     # Hyprland: xdg-desktop-portal-hyprland doesn't implement RemoteDesktop,

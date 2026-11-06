@@ -2,26 +2,15 @@
 {
     home.file.".config/hypr/rofi.sh".source = ./rofi.sh;
 
-    # The exec-once below imports WAYLAND_DISPLAY/XDG_CURRENT_DESKTOP/
-    # HYPRLAND_INSTANCE_SIGNATURE into the systemd --user manager and dbus
-    # activation environment. That manager isn't restarted on logout, so
-    # those stale values leak into the next session (e.g. switching to
-    # GNOME from GDM without rebooting), making it crash-loop back to the
-    # login screen. hyprland-session.target is started/stopped by Hyprland
-    # itself, so unset them when it stops.
-    systemd.user.services.hyprland-env-cleanup = {
-        Unit = {
-            Description = "Unset session env vars exported by Hyprland";
-            PartOf = [ "hyprland-session.target" ];
-        };
-        Service = {
-            Type = "oneshot";
-            RemainAfterExit = true;
-            ExecStart = "${pkgs.coreutils}/bin/true";
-            ExecStop = "${pkgs.systemd}/bin/systemctl --user unset-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE";
-        };
-        Install.WantedBy = [ "hyprland-session.target" ];
-    };
+    # Hyprland is now launched via uwsm (programs.hyprland.withUWSM in
+    # nixos/modules/hyprland.nix). uwsm imports the session environment and,
+    # critically, unsets it and stops graphical-session.target itself when
+    # Hyprland exits. Letting Hyprland's own systemd integration also import/
+    # export env vars and toggle hyprland-session.target here duplicated that
+    # work and never actually got cleaned up on exit (nothing was stopping
+    # the target), which is what left stale WAYLAND_DISPLAY/XDG_CURRENT_DESKTOP/
+    # HYPRLAND_INSTANCE_SIGNATURE behind and broke the next GNOME login.
+    wayland.windowManager.hyprland.systemd.enable = false;
 
     services.swayosd = {
         enable = true;
@@ -178,7 +167,13 @@
             "$browser" = "firefox";
             "$fileManager" = "files";
             "$menu" = "~/.config/hypr/rofi.sh";
-            
+
+            env = [
+                "GTK_IM_MODULE,ibus"
+                "QT_IM_MODULE,ibus"
+                "XMODIFIERS,@im=ibus"
+            ];
+
             general = {
                 gaps_in = 5;
                 gaps_out = 20;
@@ -192,10 +187,17 @@
 
             cursor = {
                 no_warps = true;
+                # nvidia leaves a stale cursor sprite in the hardware cursor
+                # plane when switching away from another session (e.g. back
+                # from GNOME) without a reboot, showing up as a second cursor.
+                # Forcing software cursors makes Hyprland redraw it every
+                # frame instead of relying on that plane.
+                no_hardware_cursors = true;
             };
             
             exec-once = [
                 "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE && hash dbus-update-activation-environment 2>/dev/null && dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE"
+                "ibus-daemon -drxb"
                 "swaybg -i ${config.stylix.image}"
                 "waybar -b mainBar"
                 "[workspace special:magic silent] obsidian"

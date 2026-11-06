@@ -72,7 +72,7 @@ in
             #!/usr/bin/env bash
             set -e
 
-            ${pkgs.hyprland}/bin/hyprctl keyword monitor "DP-6,disable"
+            ${pkgs.hyprland}/bin/hyprctl keyword monitor "DP-6,disable" || true
 
             (
                 for i in $(seq 1 60); do
