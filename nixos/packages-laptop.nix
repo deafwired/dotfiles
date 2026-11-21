@@ -9,5 +9,6 @@
         btop
         zoom-us
         git-lfs
+        remmina
     ];
 }

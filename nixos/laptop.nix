@@ -193,5 +193,10 @@
 
     services.openssh.enable = true;
 
+    services.tailscale = {
+        enable = true;
+        openFirewall = true;
+    };
+
     system.stateVersion = "24.11";
 }

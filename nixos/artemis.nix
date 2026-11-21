@@ -16,11 +16,13 @@
     # Prebuilt CUDA packages (avoids building torch etc. from source)
     nix.settings.substituters = [
         "https://cache.nixos.org"
-        "https://cuda-maintainers.cachix.org"
+        "https://cache.nixos-cuda.org"
+        "https://grimoire.cachix.org"
     ];
     nix.settings.trusted-public-keys = [
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-        "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WymO7BJRz2roDQhI8UNJ8ZDgw="
+        "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M="
+        "grimoire.cachix.org-1:5Y9dQ9wk9z4BsOnkv9t8ULcsnnaJ1zSMnzOd1dV5QbA="
     ];
 
     networking.hostName = "artemis";
@@ -29,6 +31,10 @@
         enable = true;
         allowedTCPPorts = [ 8787 2005 36743 ];
         allowedUDPPorts = [ 36743 ];
+        # wayvnc (remote desktop, see hyprland-artemis.nix) is only reachable
+        # over this interface, never the LAN/WAN ones, so it's not in the
+        # port lists above.
+        trustedInterfaces = [ "tailscale0" ];
     };
 
     fileSystems."/mnt/hdd1" = {
@@ -249,6 +255,13 @@
         settings.PasswordAuthentication = false;
         ports = [ 8787 ];
     };
+
+    services.tailscale = {
+        enable = true;
+        openFirewall = true;
+    };
+
+    programs.wayvnc.enable = true;
 
     system.stateVersion = "24.11";
 }

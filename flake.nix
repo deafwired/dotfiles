@@ -19,6 +19,8 @@
         nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
         copyparty.url = "github:9001/copyparty";
+
+        grimoire.url = "github:Slush97/grimoire/stable";
     };
     
     outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, copyparty, ...}@inputs:
