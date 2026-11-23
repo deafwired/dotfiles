@@ -127,9 +127,11 @@ in
                     cursor = false;
                 };
             } // lib.optionalAttrs isArtemis {
-                # Pin the full bar to the primary horizontal monitor; DP-6 is
-                # too narrow and gets verticalBar instead.
-                output = [ "DP-5" ];
+                # Full bar on every output except the vertical DP-6, which is
+                # too narrow and gets verticalBar instead. "*" (not just
+                # "DP-5") so a hotplugged HDMI display/TV also gets a bar;
+                # waybar checks "!" exclusions before the wildcard.
+                output = [ "!DP-6" "*" ];
             };
         } // lib.optionalAttrs isArtemis {
             # Compact bar for artemis's vertical monitor (DP-6), which is too

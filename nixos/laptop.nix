@@ -183,6 +183,16 @@
                     path = "/home/matt/Documents/Notes";
                     devices = ["MattsPhone" "artemis"];
                 };
+                # LearnHarness's learning records (knowledge graph, chats,
+                # jobs, settings). Only data/, not the whole Electron profile:
+                # the rest is per-machine cache/locks/cookies plus the
+                # ChatGPT login token. Close the app on one machine before
+                # using it on the other to avoid sync conflicts.
+                "learnharness" = {
+                    id = "learnharness";
+                    path = "/home/matt/.config/LearnHarness/data";
+                    devices = ["artemis"];
+                };
             };
             gui = {
                 user = "DeafWired";
@@ -197,6 +207,12 @@
         enable = true;
         openFirewall = true;
     };
+
+    # artemis's wayvnc uses a self-signed TLS cert (generated on artemis, see
+    # hyprland-artemis.nix). Remmina's VNC client checks it against the system
+    # trust store and ignores "ignore TLS errors", so trust it here. The cert's
+    # SAN is only "artemis", so connect to artemis:5900, not the full ts.net name.
+    security.pki.certificateFiles = [ ./certs/artemis-wayvnc.pem ];
 
     system.stateVersion = "24.11";
 }

@@ -21,6 +21,8 @@
 !nixos/packages/*
 !nixos/ppd/
 !nixos/ppd/*
+!nixos/certs/
+!nixos/certs/*
 !home-manager/
 !home-manager/*
 !home-manager/**/

@@ -242,6 +242,13 @@
                         path = "/home/matt/Books";
                         devices = ["MattsPhone" "laptop" "server"];
                 };
+                # LearnHarness learning data; see the matching folder in
+                # laptop.nix for why only data/ is synced.
+                "learnharness" = {
+                    id = "learnharness";
+                    path = "/home/matt/.config/LearnHarness/data";
+                    devices = ["laptop"];
+                };
             };
             gui = {
                 user = "DeafWired";

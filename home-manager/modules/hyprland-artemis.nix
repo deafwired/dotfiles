@@ -45,6 +45,9 @@ in
     wayland.windowManager.hyprland.settings.monitor = [
         "DP-5,2560x1440@240,0x0,1"
         verticalMonitor
+        # Anything else (HDMI TV/projector): preferred mode, placed to the
+        # right of the existing layout instead of overlapping it.
+        ",preferred,auto-right,1"
     ];
 
     wayland.windowManager.hyprland.settings.exec-once = [

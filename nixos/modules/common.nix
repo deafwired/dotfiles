@@ -31,6 +31,7 @@
         foliate
         onlyoffice-desktopeditors
         (pkgs-unstable.callPackage ../packages/forge-mtg-snapshot.nix { })
+        (callPackage ../packages/learnharness.nix { })
         prismlauncher
     ];
 
